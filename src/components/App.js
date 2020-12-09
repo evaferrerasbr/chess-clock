@@ -1,7 +1,12 @@
+import SetupForm from './SetupForm';
 import '../stylesheets/App.scss';
 
 function App() {
-  return <div className="App">Hello world</div>;
+  return (
+    <main className="App">
+      <SetupForm />
+    </main>
+  );
 }
 
 export default App;
