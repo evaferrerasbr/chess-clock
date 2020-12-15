@@ -13,7 +13,9 @@ function SetupForm() {
       <label for="incOfMinutes">increment...</label>
       <input id="incOfMinutes" type="text" name="incOfMinutes" />
       <p className="SetupForm__paragraph">minutes</p>
-      <Link to="/colours">Next</Link>
+      <button type="button">
+        <Link to="/colours">Next</Link>
+      </button>
     </form>
   );
 }

@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import Landing from './Landing';
 import ColourOptions from './ColourOptions';
+import WhitesLeft from './WhitesLeft';
+import WhitesRight from './WhitesRight';
 import Footer from './Footer';
 import '../stylesheets/App.scss';
 
@@ -23,6 +25,12 @@ function App() {
           </Route>
           <Route path="/colours">
             <ColourOptions />
+          </Route>
+          <Route path="/whites-left">
+            <WhitesLeft />
+          </Route>
+          <Route path="/whites-right">
+            <WhitesRight />
           </Route>
         </main>
       </Switch>
