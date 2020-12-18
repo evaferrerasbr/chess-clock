@@ -35,6 +35,13 @@ function App() {
     }
   };
 
+  const handlePredefinedSettings = (data) => {
+    setTotalMinutes(data.minutes);
+    setIncAfterEachPlay(data.seconds);
+    setPlayNumber('0');
+    setIncOfMinutes('0');
+  };
+
   const handleReset = () => {
     setTotalMinutes('');
     setIncAfterEachPlay('');
@@ -57,6 +64,7 @@ function App() {
                 incOfMinutes={incOfMinutes}
                 isClicked={isClicked}
                 handleInputChange={handleInputChange}
+                handlePredefinedSettings={handlePredefinedSettings}
                 handleReset={handleReset}
               />
             </Route>

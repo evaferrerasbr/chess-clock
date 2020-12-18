@@ -3,7 +3,7 @@ import InputTotalMinutes from './InputTotalMinutes';
 import InputIncAfterEachPlay from './InputIncAfterEachPlay';
 import InputPlayNumber from './InputPlayNumber';
 import InputIncOfMinutes from './InputIncOfMinutes';
-import '../stylesheets/SetupForm.scss';
+import '../../stylesheets/SetupForm.scss';
 
 function SetupForm(props) {
   const {

@@ -1,5 +1,5 @@
 import PredefinedSettings from './PredefinedSettings';
-import SetupForm from './SetupForm';
+import SetupForm from './Form/SetupForm';
 
 function Landing(props) {
   const {
@@ -9,12 +9,13 @@ function Landing(props) {
     incOfMinutes,
     isClicked,
     handleInputChange,
+    handlePredefinedSettings,
     handleReset,
   } = props;
 
   return (
     <>
-      <PredefinedSettings />
+      <PredefinedSettings handlePredefinedSettings={handlePredefinedSettings} />
       <SetupForm
         totalMinutes={totalMinutes}
         incAfterEachPlay={incAfterEachPlay}
