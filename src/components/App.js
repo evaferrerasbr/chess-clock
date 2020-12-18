@@ -13,7 +13,14 @@ function App() {
   const [incAfterEachPlay, setIncAfterEachPlay] = useState('');
   const [playNumber, setPlayNumber] = useState('');
   const [incOfMinutes, setIncOfMinutes] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleInputChange = (data) => {
+    setTotalMinutes(data.totalMinutes);
+    setIncAfterEachPlay(data.setIncAfterEachPlay);
+    setPlayNumber(data.setPlayNumber);
+    setIncOfMinutes(data.setIncOfMinutes);
+  };
 
   return (
     <>
@@ -21,7 +28,14 @@ function App() {
       <Switch>
         <main className="App">
           <Route exact path="/">
-            <Landing />
+            <Landing
+              totalMinutes={totalMinutes}
+              incAfterEachPlay={incAfterEachPlay}
+              playNumber={playNumber}
+              incOfMinutes={incOfMinutes}
+              isClicked={isClicked}
+              handleInputChange={handleInputChange}
+            />
           </Route>
           <Route path="/colours">
             <ColourOptions />
