@@ -1,56 +1,43 @@
 import { Link } from 'react-router-dom';
+import InputTotalMinutes from './InputTotalMinutes';
+import InputIncAfterEachPlay from './InputIncAfterEachPlay';
+import InputPlayNumber from './InputPlayNumber';
+import InputIncOfMinutes from './InputIncOfMinutes';
 import '../stylesheets/SetupForm.scss';
 
 function SetupForm(props) {
-  const { isClicked, handleInputChange } = props;
+  const {
+    totalMinutes,
+    incAfterEachPlay,
+    playNumber,
+    incOfMinutes,
+    isClicked,
+    handleInputChange,
+    handleReset,
+  } = props;
 
-  const data = {
-    totalMinutes: '',
-    incAfterEachPlay: '',
-    playNumber: '',
-    incOfMinutes: '',
-  };
-
-  const handleChange = (ev) => {
-    const key = ev.currentTarget.id;
-    const value = ev.currentTarget.value;
-    data[key] = value;
-    handleInputChange(data);
+  const handleClick = () => {
+    handleReset();
   };
 
   return (
     <form>
-      <label htmlFor="totalMinutes">Minutes for each player</label>
-      <input
-        id="totalMinutes"
-        type="text"
-        name="totalMinutes"
-        onChange={handleChange}
+      <InputTotalMinutes
+        totalMinutes={totalMinutes}
+        handleInputChange={handleInputChange}
       />
-      <label htmlFor="incAfterEachPlay">
-        Increment after each play (seconds)
-      </label>
-      <input
-        id="incAfterEachPlay"
-        type="text"
-        name="incAfterEachPlay"
-        onChange={handleChange}
+      <InputIncAfterEachPlay
+        incAfterEachPlay={incAfterEachPlay}
+        handleInputChange={handleInputChange}
       />
-      <label htmlFor="playNumber">After play...</label>
-      <input
-        id="playNumber"
-        type="text"
-        name="playNumber"
-        onChange={handleChange}
+      <InputPlayNumber
+        playNumber={playNumber}
+        handleInputChange={handleInputChange}
       />
-      <label htmlFor="incOfMinutes">increment...</label>
-      <input
-        id="incOfMinutes"
-        type="text"
-        name="incOfMinutes"
-        onChange={handleChange}
+      <InputIncOfMinutes
+        incOfMinutes={incOfMinutes}
+        handleInputChange={handleInputChange}
       />
-      <p className="SetupForm__paragraph">minutes</p>
       {isClicked ? (
         <button type="button">
           <Link to="/colours">Next</Link>
@@ -60,6 +47,9 @@ function SetupForm(props) {
           Next
         </button>
       )}
+      <button type="button" onClick={handleClick}>
+        Reset
+      </button>
     </form>
   );
 }

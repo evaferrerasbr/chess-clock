@@ -15,38 +15,62 @@ function App() {
   const [incOfMinutes, setIncOfMinutes] = useState('');
   const [isClicked, setIsClicked] = useState(false);
 
+  useEffect(() => {
+    if (totalMinutes && incAfterEachPlay && playNumber && incOfMinutes) {
+      setIsClicked(true);
+    } else {
+      setIsClicked(false);
+    }
+  }, [totalMinutes, incAfterEachPlay, playNumber, incOfMinutes]);
+
   const handleInputChange = (data) => {
-    setTotalMinutes(data.totalMinutes);
-    setIncAfterEachPlay(data.setIncAfterEachPlay);
-    setPlayNumber(data.setPlayNumber);
-    setIncOfMinutes(data.setIncOfMinutes);
+    if (data.name === 'totalMinutes') {
+      setTotalMinutes(data.value);
+    } else if (data.name === 'incAfterEachPlay') {
+      setIncAfterEachPlay(data.value);
+    } else if (data.name === 'playNumber') {
+      setPlayNumber(data.value);
+    } else if (data.name === 'incOfMinutes') {
+      setIncOfMinutes(data.value);
+    }
+  };
+
+  const handleReset = () => {
+    setTotalMinutes('');
+    setIncAfterEachPlay('');
+    setPlayNumber('');
+    setIncOfMinutes('');
+    setIsClicked(false);
   };
 
   return (
     <>
       <Header />
       <Switch>
-        <main className="App">
-          <Route exact path="/">
-            <Landing
-              totalMinutes={totalMinutes}
-              incAfterEachPlay={incAfterEachPlay}
-              playNumber={playNumber}
-              incOfMinutes={incOfMinutes}
-              isClicked={isClicked}
-              handleInputChange={handleInputChange}
-            />
-          </Route>
-          <Route path="/colours">
-            <ColourOptions />
-          </Route>
-          <Route path="/whites-left">
-            <WhitesLeft />
-          </Route>
-          <Route path="/whites-right">
-            <WhitesRight />
-          </Route>
-        </main>
+        <>
+          <main className="App">
+            <Route exact path="/">
+              <Landing
+                totalMinutes={totalMinutes}
+                incAfterEachPlay={incAfterEachPlay}
+                playNumber={playNumber}
+                incOfMinutes={incOfMinutes}
+                isClicked={isClicked}
+                handleInputChange={handleInputChange}
+                handleReset={handleReset}
+              />
+            </Route>
+            <Route path="/colours">
+              <ColourOptions />
+            </Route>
+            <Route path="/whites-left">
+              <WhitesLeft />
+            </Route>
+            <Route path="/whites-right">
+              <WhitesRight />
+            </Route>
+          </main>
+        </>
       </Switch>
       <Footer />
     </>

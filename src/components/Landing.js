@@ -9,6 +9,7 @@ function Landing(props) {
     incOfMinutes,
     isClicked,
     handleInputChange,
+    handleReset,
   } = props;
 
   return (
@@ -21,6 +22,7 @@ function Landing(props) {
         incOfMinutes={incOfMinutes}
         isClicked={isClicked}
         handleInputChange={handleInputChange}
+        handleReset={handleReset}
       />
     </>
   );
