@@ -1,3 +1,5 @@
+import '../stylesheets/PredefinedSettings.scss';
+
 function PredefinedSettings(props) {
   const { handlePredefinedSettings } = props;
 
@@ -24,17 +26,32 @@ function PredefinedSettings(props) {
   };
 
   return (
-    <div className="PredefinedSettings">
-      <button id="3" onClick={handleClick}>
-        3 + 2
-      </button>
-      <button id="5" onClick={handleClick}>
-        5 + 3
-      </button>
-      <button id="10" onClick={handleClick}>
-        10 + 10
-      </button>
-    </div>
+    <section className="PredefinedSettings">
+      <p className="PredefinedSettings__text">Predefined settings</p>
+      <div className="PredefinedSettings__wrapper">
+        <button
+          className="PredefinedSettings__button"
+          id="3"
+          onClick={handleClick}
+        >
+          3 + 2
+        </button>
+        <button
+          className="PredefinedSettings__button"
+          id="5"
+          onClick={handleClick}
+        >
+          5 + 3
+        </button>
+        <button
+          className="PredefinedSettings__button"
+          id="10"
+          onClick={handleClick}
+        >
+          10 + 10
+        </button>
+      </div>
+    </section>
   );
 }
 

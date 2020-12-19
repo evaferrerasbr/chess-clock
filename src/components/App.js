@@ -56,6 +56,7 @@ function App() {
       <Switch>
         <>
           <main className="App">
+            <h1 className="App__title">Chess clock</h1>
             <Route exact path="/">
               <Landing
                 totalMinutes={totalMinutes}

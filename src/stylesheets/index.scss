@@ -1,0 +1,8 @@
+@import './core/mixins.scss';
+@import './core/variables.scss';
+
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: $font-main;
+}
