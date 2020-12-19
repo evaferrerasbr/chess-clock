@@ -21,36 +21,55 @@ function SetupForm(props) {
   };
 
   return (
-    <form>
-      <InputTotalMinutes
-        totalMinutes={totalMinutes}
-        handleInputChange={handleInputChange}
-      />
-      <InputIncAfterEachPlay
-        incAfterEachPlay={incAfterEachPlay}
-        handleInputChange={handleInputChange}
-      />
-      <InputPlayNumber
-        playNumber={playNumber}
-        handleInputChange={handleInputChange}
-      />
-      <InputIncOfMinutes
-        incOfMinutes={incOfMinutes}
-        handleInputChange={handleInputChange}
-      />
-      {isClicked ? (
-        <button type="button">
-          <Link to="/colours">Next</Link>
-        </button>
-      ) : (
-        <button type="button" disabled>
-          Next
-        </button>
-      )}
-      <button type="button" onClick={handleClick}>
-        Reset
-      </button>
-    </form>
+    <>
+      <h3 className="SetupForm__title">Personalized options</h3>
+      <form className="SetupForm">
+        <div className="SetupForm__wrapper SetupForm__wrapper--up">
+          <InputTotalMinutes
+            totalMinutes={totalMinutes}
+            handleInputChange={handleInputChange}
+          />
+          <InputIncAfterEachPlay
+            incAfterEachPlay={incAfterEachPlay}
+            handleInputChange={handleInputChange}
+          />
+        </div>
+        <div className="SetupForm__wrapper SetupForm__wrapper--down">
+          <InputPlayNumber
+            playNumber={playNumber}
+            handleInputChange={handleInputChange}
+          />
+          <InputIncOfMinutes
+            incOfMinutes={incOfMinutes}
+            handleInputChange={handleInputChange}
+          />
+        </div>
+        <div className="SetupForm__wrapper--button">
+          {isClicked ? (
+            <button className="SetupForm__button" type="button">
+              <Link className="SetupForm__button--link" to="/colours">
+                Next
+              </Link>
+            </button>
+          ) : (
+            <button
+              className="SetupForm__button SetupForm__button--disabled"
+              type="button"
+              disabled
+            >
+              Next
+            </button>
+          )}
+          <button
+            className="SetupForm__button"
+            type="button"
+            onClick={handleClick}
+          >
+            Reset
+          </button>
+        </div>
+      </form>
+    </>
   );
 }
 

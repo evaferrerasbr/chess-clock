@@ -11,15 +11,17 @@ function InputIncOfMinutes(props) {
 
   return (
     <>
-      <label htmlFor="incOfMinutes">increment...</label>
+      <label className="SetupForm__label" htmlFor="incOfMinutes">
+        Increment of minutes at selected play
+      </label>
       <input
+        className="SetupForm__input"
         id="incOfMinutes"
-        type="text"
+        type="number"
         name="incOfMinutes"
         value={incOfMinutes}
         onChange={handleChange}
       />
-      <p className="SetupForm__paragraph">minutes</p>
     </>
   );
 }

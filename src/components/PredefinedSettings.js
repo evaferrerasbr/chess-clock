@@ -27,7 +27,7 @@ function PredefinedSettings(props) {
 
   return (
     <section className="PredefinedSettings">
-      <p className="PredefinedSettings__text">Predefined settings</p>
+      <h3 className="PredefinedSettings__title">Predefined options</h3>
       <div className="PredefinedSettings__wrapper">
         <button
           className="PredefinedSettings__button"

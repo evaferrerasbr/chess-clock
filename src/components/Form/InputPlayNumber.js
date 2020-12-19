@@ -11,10 +11,16 @@ function InputPlayNumber(props) {
 
   return (
     <>
-      <label htmlFor="playNumber">After play...</label>
+      <label
+        className="SetupForm__label SetupForm__label--short"
+        htmlFor="playNumber"
+      >
+        Play number
+      </label>
       <input
+        className="SetupForm__input"
         id="playNumber"
-        type="text"
+        type="number"
         name="playNumber"
         value={playNumber}
         onChange={handleChange}

@@ -11,10 +11,16 @@ function InputTotalMinutes(props) {
 
   return (
     <>
-      <label htmlFor="totalMinutes">Minutes for each player</label>
+      <label
+        className="SetupForm__label SetupForm__label--short"
+        htmlFor="totalMinutes"
+      >
+        Minutes for each player
+      </label>
       <input
+        className="SetupForm__input"
         id="totalMinutes"
-        type="text"
+        type="number"
         name="totalMinutes"
         value={totalMinutes}
         onChange={handleChange}
