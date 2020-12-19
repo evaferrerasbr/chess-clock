@@ -1,0 +1,57 @@
+@import './core/variables.scss';
+
+.SetupForm {
+  width: 470px;
+  margin: 0px auto;
+  font-size: 0.75rem;
+  &__title {
+    font-size: 1rem;
+    font-weight: 100;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  &__label {
+    display: inline-block;
+    width: 210px;
+    margin: 5px 0px;
+    &--short {
+      width: 130px;
+    }
+  }
+  &__input {
+    width: 50px;
+    margin-right: 10px;
+    padding-left: 3px;
+    font-size: 0.6rem;
+    height: 15px;
+    color: $color-font;
+  }
+  &__wrapper {
+    &--down {
+      margin-bottom: 10px;
+    }
+    &--button {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  &__button {
+    margin: 3px;
+    height: 25px;
+    width: 75px;
+    border-radius: 3px;
+    border-style: none;
+    background-color: $color-dark;
+    color: $color-light;
+    cursor: pointer;
+    &--link {
+      text-decoration: none;
+      color: inherit;
+    }
+    &--disabled {
+      background-color: $color-light;
+      color: $color-dark;
+      cursor: default;
+    }
+  }
+}
