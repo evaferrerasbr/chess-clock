@@ -1,0 +1,9 @@
+@import './core/variables.scss';
+
+.Clock {
+  height: 200px;
+  width: 380px;
+  border: 1px solid $color-dark;
+  border-radius: 5px;
+  margin: 10px;
+}

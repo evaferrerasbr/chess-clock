@@ -73,10 +73,20 @@ function App() {
               <ColourOptions />
             </Route>
             <Route path="/whites-left">
-              <WhitesLeft />
+              <WhitesLeft
+                totalMinutes={totalMinutes}
+                incAfterEachPlay={incAfterEachPlay}
+                playNumber={playNumber}
+                incOfMinutes={incOfMinutes}
+              />
             </Route>
             <Route path="/whites-right">
-              <WhitesRight />
+              <WhitesRight
+                totalMinutes={totalMinutes}
+                incAfterEachPlay={incAfterEachPlay}
+                playNumber={playNumber}
+                incOfMinutes={incOfMinutes}
+              />
             </Route>
           </main>
         </>
