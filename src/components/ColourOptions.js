@@ -1,16 +1,36 @@
 import { Link } from 'react-router-dom';
+import '../stylesheets/ColourOptions.scss';
 
 function ColourOptions() {
   return (
-    <section>
-      <p>Who plays with whites?</p>
-      <article>
-        <Link to="/whites-left">Left player</Link>
+    <section className="ColourOptions">
+      <h2 className="ColourOptions__title">Step 2: Who plays with whites?</h2>
+      <article className="ColourOptions__wrapper">
+        <button
+          className="ColourOptions__button ColourOptions__button--left"
+          type="button"
+        >
+          <Link className="ColourOptions__button--link" to="/whites-left">
+            Left player
+          </Link>
+        </button>
+        <button
+          className="ColourOptions__button ColourOptions__button--right"
+          type="button"
+        >
+          <Link className="ColourOptions__button--link" to="/whites-right">
+            Right player
+          </Link>
+        </button>
       </article>
-      <article>
-        <Link to="/whites-right">Right player</Link>
-      </article>
-      <Link to="/">Go back</Link>
+      <button
+        className="ColourOptions__button ColourOptions__button--goback"
+        type="button"
+      >
+        <Link className="ColourOptions__button--link" to="/">
+          Go back
+        </Link>
+      </button>
     </section>
   );
 }
