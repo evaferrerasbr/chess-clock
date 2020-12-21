@@ -1,9 +1,15 @@
 @import './core/variables.scss';
 
 .Clock {
-  height: 200px;
-  width: 380px;
+  height: 180px;
+  width: 350px;
   border: 1px solid $color-dark;
   border-radius: 5px;
   margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__numbers {
+    font-size: 7rem;
+  }
 }
