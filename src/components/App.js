@@ -3,12 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import Landing from './Landing';
 import ColourOptions from './ColourOptions';
-import WhitesLeft from './WhitesLeft';
-import WhitesRight from './WhitesRight';
+import ClocksPage from './ClocksPage';
 import Footer from './Footer';
 import '../stylesheets/App.scss';
 
 function App() {
+  //STATE
   const [totalMinutes, setTotalMinutes] = useState('');
   const [incAfterEachPlay, setIncAfterEachPlay] = useState('');
   const [playNumber, setPlayNumber] = useState('');
@@ -16,7 +16,9 @@ function App() {
   const [isClicked, setIsClicked] = useState(false);
   const [whiteCounter, setWhiteCounter] = useState(0);
   const [blackCounter, setBlackCounter] = useState(0);
+  const [whitesForLeft, setWhitesForLeft] = useState(false);
 
+  //HOOKS
   useEffect(() => {
     if (totalMinutes && incAfterEachPlay && playNumber && incOfMinutes) {
       setIsClicked(true);
@@ -30,6 +32,7 @@ function App() {
     setBlackCounter(totalMinutes * 60);
   }, [totalMinutes]);
 
+  //HANDLERS
   const handleInputChange = (data) => {
     if (data.name === 'totalMinutes') {
       setTotalMinutes(data.value);
@@ -49,6 +52,14 @@ function App() {
     setIncOfMinutes('0');
   };
 
+  const handleColourOptions = (selectedClock) => {
+    if (selectedClock === 'left') {
+      setWhitesForLeft(true);
+    } else {
+      setWhitesForLeft(false);
+    }
+  };
+
   const handleReset = () => {
     setTotalMinutes('');
     setIncAfterEachPlay('');
@@ -57,6 +68,7 @@ function App() {
     setIsClicked(false);
   };
 
+  //JSX
   return (
     <>
       <Header />
@@ -77,26 +89,17 @@ function App() {
               />
             </Route>
             <Route path="/colours">
-              <ColourOptions />
+              <ColourOptions handleColourOptions={handleColourOptions} />
             </Route>
-            <Route path="/whites-left">
-              <WhitesLeft
+            <Route path="/game">
+              <ClocksPage
                 totalMinutes={totalMinutes}
                 incAfterEachPlay={incAfterEachPlay}
                 playNumber={playNumber}
                 incOfMinutes={incOfMinutes}
                 whiteCounter={whiteCounter}
                 blackCounter={blackCounter}
-              />
-            </Route>
-            <Route path="/whites-right">
-              <WhitesRight
-                totalMinutes={totalMinutes}
-                incAfterEachPlay={incAfterEachPlay}
-                playNumber={playNumber}
-                incOfMinutes={incOfMinutes}
-                whiteCounter={whiteCounter}
-                blackCounter={blackCounter}
+                whitesForLeft={whitesForLeft}
               />
             </Route>
           </main>
