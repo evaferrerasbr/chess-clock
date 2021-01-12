@@ -18,11 +18,11 @@ function ClocksPage(props) {
       </button>
       <article className="ClocksPage__clocks">
         <Clock
-          counter={whiteCounter}
+          counter={whitesForLeft ? whiteCounter : blackCounter}
           colour={whitesForLeft ? 'white' : 'black'}
         />
         <Clock
-          counter={blackCounter}
+          counter={whitesForLeft ? blackCounter : whiteCounter}
           colour={whitesForLeft ? 'black' : 'white'}
         />
       </article>
