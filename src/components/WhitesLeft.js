@@ -21,8 +21,8 @@ function WhitesLeft(props) {
         Stop
       </button>
       <article className="WhitesLeft__clocks">
-        <Clock counter={whiteCounter} />
-        <Clock counter={blackCounter} />
+        <Clock counter={whiteCounter} colour="white" />
+        <Clock counter={blackCounter} colour="black" />
       </article>
       <button className="WhitesLeft__button" type="button">
         <Link className="WhitesLeft__button--link" to="/colours">

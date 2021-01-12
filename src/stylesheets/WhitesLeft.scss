@@ -12,6 +12,9 @@
     margin-bottom: 15px;
     display: flex;
     justify-content: space-between;
+    &--black {
+      background-color: black;
+    }
   }
   &__button {
     margin: 3px;
