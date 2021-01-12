@@ -1,13 +1,9 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Clock from './Clock';
 import '../stylesheets/WhitesLeft.scss';
 
 function WhitesLeft(props) {
-  const { totalMinutes } = props;
-
-  const [whiteCounter, setWhiteCounter] = useState(totalMinutes * 60);
-  const [blackCounter, setBlackCounter] = useState(totalMinutes * 60);
+  const { whiteCounter, blackCounter } = props;
 
   return (
     <section className="WhitesLeft">
@@ -22,7 +18,7 @@ function WhitesLeft(props) {
       </button>
       <article className="WhitesLeft__clocks">
         <Clock counter={whiteCounter} colour="white" />
-        <Clock counter={blackCounter} colour="black" />
+        <Clock counter={blackCounter} />
       </article>
       <button className="WhitesLeft__button" type="button">
         <Link className="WhitesLeft__button--link" to="/colours">

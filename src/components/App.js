@@ -14,6 +14,8 @@ function App() {
   const [playNumber, setPlayNumber] = useState('');
   const [incOfMinutes, setIncOfMinutes] = useState('');
   const [isClicked, setIsClicked] = useState(false);
+  const [whiteCounter, setWhiteCounter] = useState(0);
+  const [blackCounter, setBlackCounter] = useState(0);
 
   useEffect(() => {
     if (totalMinutes && incAfterEachPlay && playNumber && incOfMinutes) {
@@ -22,6 +24,11 @@ function App() {
       setIsClicked(false);
     }
   }, [totalMinutes, incAfterEachPlay, playNumber, incOfMinutes]);
+
+  useEffect(() => {
+    setWhiteCounter(totalMinutes * 60);
+    setBlackCounter(totalMinutes * 60);
+  }, [totalMinutes]);
 
   const handleInputChange = (data) => {
     if (data.name === 'totalMinutes') {
@@ -78,6 +85,8 @@ function App() {
                 incAfterEachPlay={incAfterEachPlay}
                 playNumber={playNumber}
                 incOfMinutes={incOfMinutes}
+                whiteCounter={whiteCounter}
+                blackCounter={blackCounter}
               />
             </Route>
             <Route path="/whites-right">
@@ -86,6 +95,8 @@ function App() {
                 incAfterEachPlay={incAfterEachPlay}
                 playNumber={playNumber}
                 incOfMinutes={incOfMinutes}
+                whiteCounter={whiteCounter}
+                blackCounter={blackCounter}
               />
             </Route>
           </main>
