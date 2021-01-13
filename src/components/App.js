@@ -23,7 +23,6 @@ function App() {
   const [whitesTurn, setWhitesTurn] = useState(true);
   const [isStarted, setIsStarted] = useState(false);
   const [isStopped, setIsStopped] = useState(false);
-  const [isContinued, setIsContinued] = useState(false);
 
   //HOOKS
   useEffect(() => {
@@ -104,7 +103,7 @@ function App() {
   };
 
   const handleContinue = () => {
-    setIsContinued(true);
+    setIsStopped(false);
   };
 
   const handleReset = () => {
@@ -114,6 +113,7 @@ function App() {
     setIncOfMinutes('');
     setFormIsFilled(false);
     setIsStarted(false);
+    setIsStopped(false);
     setWhitesTurn(true);
   };
 
