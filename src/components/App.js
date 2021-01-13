@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { setLocalStorage, getFromLocalStorage } from '../services/localstorage';
 import Header from './Header';
 import Landing from './Landing';
 import ColourOptions from './ColourOptions';
@@ -7,22 +8,26 @@ import ClocksPage from './ClocksPage';
 import Footer from './Footer';
 import '../stylesheets/App.scss';
 
+const dataLocal = getFromLocalStorage();
+
 function App() {
   //STATE
   //setup
-  const [totalMinutes, setTotalMinutes] = useState('');
-  const [incAfterEachPlay, setIncAfterEachPlay] = useState('');
-  const [playNumber, setPlayNumber] = useState('');
-  const [incOfMinutes, setIncOfMinutes] = useState('');
-  const [formIsFilled, setFormIsFilled] = useState(false);
-  const [whitesForLeft, setWhitesForLeft] = useState(false);
+  const [totalMinutes, setTotalMinutes] = useState(dataLocal.totalMinutes);
+  const [incAfterEachPlay, setIncAfterEachPlay] = useState(
+    dataLocal.incAfterEachPlay
+  );
+  const [playNumber, setPlayNumber] = useState(dataLocal.playNumber);
+  const [incOfMinutes, setIncOfMinutes] = useState(dataLocal.incOfMinutes);
+  const [formIsFilled, setFormIsFilled] = useState(dataLocal.formIsFilled);
+  const [whitesForLeft, setWhitesForLeft] = useState(dataLocal.whitesForLeft);
   //counters
-  const [whiteCounter, setWhiteCounter] = useState(0);
-  const [blackCounter, setBlackCounter] = useState(0);
+  const [whiteCounter, setWhiteCounter] = useState(dataLocal.whiteCounter);
+  const [blackCounter, setBlackCounter] = useState(dataLocal.blackCounter);
   //game
-  const [whitesTurn, setWhitesTurn] = useState(true);
-  const [isStarted, setIsStarted] = useState(false);
-  const [isStopped, setIsStopped] = useState(false);
+  const [whitesTurn, setWhitesTurn] = useState(dataLocal.whitesTurn);
+  const [isStarted, setIsStarted] = useState(dataLocal.isStarted);
+  const [isStopped, setIsStopped] = useState(dataLocal.isStopped);
 
   //HOOKS
   useEffect(() => {
@@ -63,6 +68,22 @@ function App() {
         window.removeEventListener('keyup', handleKeyUp);
       };
     }
+  });
+
+  useEffect(() => {
+    setLocalStorage(
+      totalMinutes,
+      incAfterEachPlay,
+      playNumber,
+      incOfMinutes,
+      formIsFilled,
+      whitesForLeft,
+      whiteCounter,
+      blackCounter,
+      whitesTurn,
+      isStarted,
+      isStopped
+    );
   });
 
   //EVENT HANDLERS
