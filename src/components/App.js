@@ -9,24 +9,28 @@ import '../stylesheets/App.scss';
 
 function App() {
   //STATE
+  //setup
   const [totalMinutes, setTotalMinutes] = useState('');
   const [incAfterEachPlay, setIncAfterEachPlay] = useState('');
   const [playNumber, setPlayNumber] = useState('');
   const [incOfMinutes, setIncOfMinutes] = useState('');
-  const [isClicked, setIsClicked] = useState(false);
+  const [formIsFilled, setFormIsFilled] = useState(false);
+  const [whitesForLeft, setWhitesForLeft] = useState(false);
+  //counters
   const [whiteCounter, setWhiteCounter] = useState(0);
   const [blackCounter, setBlackCounter] = useState(0);
-  const [whitesForLeft, setWhitesForLeft] = useState(false);
-  const [isStarted, setIsStarted] = useState(false);
+  //game
   const [whitesTurn, setWhitesTurn] = useState(true);
+  const [isStarted, setIsStarted] = useState(false);
   const [isStopped, setIsStopped] = useState(false);
+  const [isContinued, setIsContinued] = useState(false);
 
   //HOOKS
   useEffect(() => {
     if (totalMinutes && incAfterEachPlay && playNumber && incOfMinutes) {
-      setIsClicked(true);
+      setFormIsFilled(true);
     } else {
-      setIsClicked(false);
+      setFormIsFilled(false);
     }
   }, [totalMinutes, incAfterEachPlay, playNumber, incOfMinutes]);
 
@@ -99,12 +103,16 @@ function App() {
     setIsStopped(true);
   };
 
+  const handleContinue = () => {
+    setIsContinued(true);
+  };
+
   const handleReset = () => {
     setTotalMinutes('');
     setIncAfterEachPlay('');
     setPlayNumber('');
     setIncOfMinutes('');
-    setIsClicked(false);
+    setFormIsFilled(false);
     setIsStarted(false);
     setWhitesTurn(true);
   };
@@ -123,7 +131,7 @@ function App() {
                 incAfterEachPlay={incAfterEachPlay}
                 playNumber={playNumber}
                 incOfMinutes={incOfMinutes}
-                isClicked={isClicked}
+                formIsFilled={formIsFilled}
                 handleInputChange={handleInputChange}
                 handlePredefinedSettings={handlePredefinedSettings}
                 handleReset={handleReset}
@@ -142,8 +150,10 @@ function App() {
                 blackCounter={blackCounter}
                 whitesForLeft={whitesForLeft}
                 isStarted={isStarted}
+                isStopped={isStopped}
                 handleStart={handleStart}
                 handleStop={handleStop}
+                handleContinue={handleContinue}
               />
             </Route>
           </main>

@@ -8,7 +8,7 @@ function Landing(props) {
     incAfterEachPlay,
     playNumber,
     incOfMinutes,
-    isClicked,
+    formIsFilled,
     handleInputChange,
     handlePredefinedSettings,
     handleReset,
@@ -23,7 +23,7 @@ function Landing(props) {
         incAfterEachPlay={incAfterEachPlay}
         playNumber={playNumber}
         incOfMinutes={incOfMinutes}
-        isClicked={isClicked}
+        formIsFilled={formIsFilled}
         handleInputChange={handleInputChange}
         handleReset={handleReset}
       />

@@ -11,7 +11,7 @@ function SetupForm(props) {
     incAfterEachPlay,
     playNumber,
     incOfMinutes,
-    isClicked,
+    formIsFilled,
     handleInputChange,
     handleReset,
   } = props;
@@ -45,7 +45,7 @@ function SetupForm(props) {
           />
         </div>
         <div className="SetupForm__wrapper--button">
-          {isClicked ? (
+          {formIsFilled ? (
             <button className="SetupForm__button" type="button">
               <Link className="SetupForm__button--link" to="/colours">
                 Next

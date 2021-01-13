@@ -8,15 +8,53 @@ function ClocksPage(props) {
     blackCounter,
     whitesForLeft,
     isStarted,
+    isStopped,
     handleStart,
     handleStop,
+    handleContinue,
   } = props;
 
   const handleClick = () => {
     if (!isStarted) {
       handleStart();
-    } else {
+    } else if (isStarted && !isStopped) {
       handleStop();
+    } else if (isStarted && isStopped) {
+      handleContinue();
+    }
+  };
+
+  const changeButtons = () => {
+    if (!isStarted) {
+      return (
+        <button
+          className="ClocksPage__button"
+          type="button"
+          onClick={handleClick}
+        >
+          Start
+        </button>
+      );
+    } else if (isStarted && !isStopped) {
+      return (
+        <button
+          className="ClocksPage__button"
+          type="button"
+          onClick={handleClick}
+        >
+          Stop
+        </button>
+      );
+    } else if (isStarted && isStopped) {
+      return (
+        <button
+          className="ClocksPage__button"
+          type="button"
+          onClick={handleClick}
+        >
+          Continue
+        </button>
+      );
     }
   };
 
@@ -25,23 +63,7 @@ function ClocksPage(props) {
       <h2 className="ClocksPage__title">
         Step 3: Start and press any key to change turns
       </h2>
-      {!isStarted ? (
-        <button
-          className="ClocksPage__button"
-          type="button"
-          onClick={handleClick}
-        >
-          Start
-        </button>
-      ) : (
-        <button
-          className="ClocksPage__button"
-          type="button"
-          onClick={handleClick}
-        >
-          Stop
-        </button>
-      )}
+      {changeButtons()}
       <article className="ClocksPage__clocks">
         <Clock
           counter={whitesForLeft ? whiteCounter : blackCounter}
