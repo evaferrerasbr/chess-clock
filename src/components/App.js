@@ -38,17 +38,29 @@ function App() {
   }, [totalMinutes, isStarted]);
 
   useEffect(() => {
-    if (isStarted) {
+    if (isStarted && !isStopped) {
       const interval = setInterval(() => {
-        if (whitesTurn && !isStopped) {
+        if (whitesTurn && whiteCounter > 0) {
           setWhiteCounter((whiteCounter) => whiteCounter - 1);
-        } else if (!whitesTurn && !isStopped) {
+        } else if (!whitesTurn && blackCounter > 0) {
           setBlackCounter((blackCounter) => blackCounter - 1);
         }
       }, 1000);
       return () => clearInterval(interval);
     }
-  }, [isStarted, whitesTurn, isStopped]);
+  }, [isStarted, whitesTurn, isStopped, whiteCounter, blackCounter]);
+
+  useEffect(() => {
+    if (isStarted) {
+      const handleKeyUp = () => {
+        setWhitesTurn(!whitesTurn);
+      };
+      window.addEventListener('keyup', handleKeyUp);
+      return () => {
+        window.removeEventListener('keyup', handleKeyUp);
+      };
+    }
+  });
 
   //EVENT HANDLERS
   const handleInputChange = (data) => {
