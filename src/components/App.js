@@ -17,6 +17,9 @@ function App() {
   const [whiteCounter, setWhiteCounter] = useState(0);
   const [blackCounter, setBlackCounter] = useState(0);
   const [whitesForLeft, setWhitesForLeft] = useState(false);
+  const [isStarted, setIsStarted] = useState(false);
+  const [whitesTurn, setWhitesTurn] = useState(true);
+  const [isStopped, setIsStopped] = useState(false);
 
   //HOOKS
   useEffect(() => {
@@ -28,11 +31,26 @@ function App() {
   }, [totalMinutes, incAfterEachPlay, playNumber, incOfMinutes]);
 
   useEffect(() => {
-    setWhiteCounter(totalMinutes * 60);
-    setBlackCounter(totalMinutes * 60);
-  }, [totalMinutes]);
+    if (!isStarted) {
+      setWhiteCounter(totalMinutes * 60);
+      setBlackCounter(totalMinutes * 60);
+    }
+  }, [totalMinutes, isStarted]);
 
-  //HANDLERS
+  useEffect(() => {
+    if (isStarted) {
+      const interval = setInterval(() => {
+        if (whitesTurn && !isStopped) {
+          setWhiteCounter((whiteCounter) => whiteCounter - 1);
+        } else if (!whitesTurn && !isStopped) {
+          setBlackCounter((blackCounter) => blackCounter - 1);
+        }
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [isStarted, whitesTurn, isStopped]);
+
+  //EVENT HANDLERS
   const handleInputChange = (data) => {
     if (data.name === 'totalMinutes') {
       setTotalMinutes(data.value);
@@ -60,12 +78,23 @@ function App() {
     }
   };
 
+  const handleStart = () => {
+    setIsStarted(true);
+  };
+
+  const handleStop = () => {
+    setWhitesTurn(!whitesTurn);
+    setIsStopped(true);
+  };
+
   const handleReset = () => {
     setTotalMinutes('');
     setIncAfterEachPlay('');
     setPlayNumber('');
     setIncOfMinutes('');
     setIsClicked(false);
+    setIsStarted(false);
+    setWhitesTurn(true);
   };
 
   //JSX
@@ -100,6 +129,9 @@ function App() {
                 whiteCounter={whiteCounter}
                 blackCounter={blackCounter}
                 whitesForLeft={whitesForLeft}
+                isStarted={isStarted}
+                handleStart={handleStart}
+                handleStop={handleStop}
               />
             </Route>
           </main>

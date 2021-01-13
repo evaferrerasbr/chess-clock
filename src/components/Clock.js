@@ -14,7 +14,7 @@ function Clock(props) {
           {Math.floor(counter / 60)}:{`0${counter % 60}`}
         </p>
       ) : (
-        <p>
+        <p className="Clock__numbers">
           {Math.floor(counter / 60)}:{counter % 60}
         </p>
       )}
