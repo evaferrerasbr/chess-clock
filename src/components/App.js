@@ -31,6 +31,7 @@ function App() {
   const [whitesTurn, setWhitesTurn] = useState(dataLocal.whitesTurn);
   const [isStarted, setIsStarted] = useState(dataLocal.isStarted);
   const [isStopped, setIsStopped] = useState(dataLocal.isStopped);
+  const [numberOfPlays, setNumberOfPlays] = useState(dataLocal.numberOfPlays);
 
   //HOOKS
   useEffect(() => {
@@ -66,6 +67,7 @@ function App() {
       const handleKeyUp = () => {
         setWhitesTurn(!whitesTurn);
         setAfterFirstTurn(true);
+        setNumberOfPlays((numberOfPlays) => numberOfPlays + 1);
       };
       window.addEventListener('keyup', handleKeyUp);
       return () => {
@@ -75,16 +77,28 @@ function App() {
   });
 
   useEffect(() => {
-    if (whitesTurn && afterFirstTurn) {
+    if (whitesTurn && afterFirstTurn && !isStopped) {
       setBlackCounter(
         (blackCounter) => blackCounter + parseInt(incAfterEachPlay)
       );
-    } else if (!whitesTurn) {
+    } else if (!whitesTurn && afterFirstTurn && !isStopped) {
       setWhiteCounter(
         (whiteCounter) => whiteCounter + parseInt(incAfterEachPlay)
       );
     }
-  }, [whitesTurn, incAfterEachPlay, afterFirstTurn]);
+  }, [whitesTurn, incAfterEachPlay, afterFirstTurn, isStopped]);
+
+  useEffect(() => {
+    if (numberOfPlays === playNumber * 2) {
+      console.log('hola');
+      setWhiteCounter(
+        (whiteCounter) => whiteCounter + parseInt(incOfMinutes) * 60
+      );
+      setBlackCounter(
+        (blackCounter) => blackCounter + parseInt(incOfMinutes) * 60
+      );
+    }
+  }, [numberOfPlays, incOfMinutes, playNumber]);
 
   useEffect(() => {
     setLocalStorage(
@@ -99,7 +113,8 @@ function App() {
       whitesTurn,
       isStarted,
       isStopped,
-      afterFirstTurn
+      afterFirstTurn,
+      numberOfPlays
     );
   });
 
@@ -138,6 +153,7 @@ function App() {
   const handleStop = () => {
     setWhitesTurn(!whitesTurn);
     setIsStopped(true);
+    setNumberOfPlays((numberOfPlays) => numberOfPlays + 1);
   };
 
   const handleContinue = () => {
@@ -154,6 +170,7 @@ function App() {
     setIsStopped(false);
     setWhitesTurn(true);
     setAfterFirstTurn(false);
+    setNumberOfPlays(0);
   };
 
   //JSX
