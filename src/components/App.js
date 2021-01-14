@@ -5,6 +5,7 @@ import Header from './Header';
 import Landing from './Landing';
 import ColourOptions from './ColourOptions';
 import ClocksPage from './ClocksPage';
+import GameOver from './GameOver';
 import Footer from './Footer';
 import '../stylesheets/App.scss';
 
@@ -90,7 +91,6 @@ function App() {
 
   useEffect(() => {
     if (numberOfPlays === playNumber * 2) {
-      console.log('hola');
       setWhiteCounter(
         (whiteCounter) => whiteCounter + parseInt(incOfMinutes) * 60
       );
@@ -197,20 +197,27 @@ function App() {
               <ColourOptions handleColourOptions={handleColourOptions} />
             </Route>
             <Route path="/game">
-              <ClocksPage
-                totalMinutes={totalMinutes}
-                incAfterEachPlay={incAfterEachPlay}
-                playNumber={playNumber}
-                incOfMinutes={incOfMinutes}
-                whiteCounter={whiteCounter}
-                blackCounter={blackCounter}
-                whitesForLeft={whitesForLeft}
-                isStarted={isStarted}
-                isStopped={isStopped}
-                handleStart={handleStart}
-                handleStop={handleStop}
-                handleContinue={handleContinue}
-              />
+              {whiteCounter && blackCounter !== 0 ? (
+                <ClocksPage
+                  totalMinutes={totalMinutes}
+                  incAfterEachPlay={incAfterEachPlay}
+                  playNumber={playNumber}
+                  incOfMinutes={incOfMinutes}
+                  whiteCounter={whiteCounter}
+                  blackCounter={blackCounter}
+                  whitesForLeft={whitesForLeft}
+                  isStarted={isStarted}
+                  isStopped={isStopped}
+                  handleStart={handleStart}
+                  handleStop={handleStop}
+                  handleContinue={handleContinue}
+                />
+              ) : (
+                <GameOver
+                  whiteCounter={whiteCounter}
+                  blackCounter={blackCounter}
+                />
+              )}
             </Route>
           </main>
         </>
