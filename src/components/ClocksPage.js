@@ -14,7 +14,7 @@ function ClocksPage(props) {
     handleContinue,
   } = props;
 
-  const handleClick = () => {
+  const handleMouseDown = () => {
     if (!isStarted) {
       handleStart();
     } else if (isStarted && !isStopped) {
@@ -30,7 +30,7 @@ function ClocksPage(props) {
         <button
           className="ClocksPage__button"
           type="button"
-          onClick={handleClick}
+          onMouseDown={handleMouseDown}
         >
           Start
         </button>
@@ -40,7 +40,7 @@ function ClocksPage(props) {
         <button
           className="ClocksPage__button"
           type="button"
-          onClick={handleClick}
+          onMouseDown={handleMouseDown}
         >
           Stop
         </button>
@@ -50,7 +50,7 @@ function ClocksPage(props) {
         <button
           className="ClocksPage__button"
           type="button"
-          onClick={handleClick}
+          onMouseDown={handleMouseDown}
         >
           Continue
         </button>

@@ -11,6 +11,7 @@ const getFromLocalStorage = () => {
         whitesForLeft: false,
         whiteCounter: 0,
         blackCounter: 0,
+        afterFirstTurn: false,
         whitesTurn: true,
         isStarted: false,
         isStopped: false,
@@ -28,7 +29,8 @@ const setLocalStorage = (
   blackCounter,
   whitesTurn,
   isStarted,
-  isStopped
+  isStopped,
+  afterFirstTurn
 ) => {
   const data = {
     totalMinutes: totalMinutes,
@@ -42,6 +44,7 @@ const setLocalStorage = (
     whitesTurn: whitesTurn,
     isStarted: isStarted,
     isStopped: isStopped,
+    afterFirstTurn: afterFirstTurn,
   };
   localStorage.setItem('dataLocal', JSON.stringify(data));
 };

@@ -25,6 +25,9 @@ function App() {
   const [whiteCounter, setWhiteCounter] = useState(dataLocal.whiteCounter);
   const [blackCounter, setBlackCounter] = useState(dataLocal.blackCounter);
   //game
+  const [afterFirstTurn, setAfterFirstTurn] = useState(
+    dataLocal.afterFirstTurn
+  );
   const [whitesTurn, setWhitesTurn] = useState(dataLocal.whitesTurn);
   const [isStarted, setIsStarted] = useState(dataLocal.isStarted);
   const [isStopped, setIsStopped] = useState(dataLocal.isStopped);
@@ -62,6 +65,7 @@ function App() {
     if (isStarted) {
       const handleKeyUp = () => {
         setWhitesTurn(!whitesTurn);
+        setAfterFirstTurn(true);
       };
       window.addEventListener('keyup', handleKeyUp);
       return () => {
@@ -69,6 +73,18 @@ function App() {
       };
     }
   });
+
+  useEffect(() => {
+    if (whitesTurn && afterFirstTurn) {
+      setBlackCounter(
+        (blackCounter) => blackCounter + parseInt(incAfterEachPlay)
+      );
+    } else if (!whitesTurn) {
+      setWhiteCounter(
+        (whiteCounter) => whiteCounter + parseInt(incAfterEachPlay)
+      );
+    }
+  }, [whitesTurn, incAfterEachPlay, afterFirstTurn]);
 
   useEffect(() => {
     setLocalStorage(
@@ -82,7 +98,8 @@ function App() {
       blackCounter,
       whitesTurn,
       isStarted,
-      isStopped
+      isStopped,
+      afterFirstTurn
     );
   });
 
@@ -136,6 +153,7 @@ function App() {
     setIsStarted(false);
     setIsStopped(false);
     setWhitesTurn(true);
+    setAfterFirstTurn(false);
   };
 
   //JSX
