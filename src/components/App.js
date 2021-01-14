@@ -30,9 +30,9 @@ function App() {
     dataLocal.afterFirstTurn
   );
   const [whitesTurn, setWhitesTurn] = useState(dataLocal.whitesTurn);
+  const [numberOfPlays, setNumberOfPlays] = useState(dataLocal.numberOfPlays);
   const [isStarted, setIsStarted] = useState(dataLocal.isStarted);
   const [isStopped, setIsStopped] = useState(dataLocal.isStopped);
-  const [numberOfPlays, setNumberOfPlays] = useState(dataLocal.numberOfPlays);
 
   //HOOKS
   useEffect(() => {
