@@ -21,7 +21,7 @@ function Landing(props) {
 
   return (
     <>
-      <h2 className="Landing__title">Step 1: configure your game</h2>
+      <h2 className="Landing__title">Configure your game</h2>
       <section className="Landing__options">
         <PredefinedSettings
           handlePredefinedSettings={handlePredefinedSettings}

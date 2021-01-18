@@ -66,7 +66,7 @@ function ClocksPage(props) {
   return (
     <section className="ClocksPage">
       <h2 className="ClocksPage__title">
-        Step 3: Start and press any key to change turns
+        Start and press any key to change turns
       </h2>
       <button onClick={handleClick}>Change colours</button>
       {changeButtons()}

@@ -1,4 +1,7 @@
+@import './core/variables.scss';
+
 .App {
+  font-family: $font-main;
   &__title {
     font-size: 1.3rem;
     text-align: center;

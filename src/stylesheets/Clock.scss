@@ -1,6 +1,7 @@
 @import './core/variables.scss';
 
 .Clock {
+  font-family: $font-clock;
   height: 180px;
   width: 350px;
   border: 1px solid $color-dark;
@@ -18,6 +19,6 @@
     color: white;
   }
   &__numbers {
-    font-size: 7rem;
+    font-size: 6rem;
   }
 }
