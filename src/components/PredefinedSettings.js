@@ -26,7 +26,7 @@ function PredefinedSettings(props) {
   };
 
   return (
-    <section className="PredefinedSettings">
+    <article className="PredefinedSettings">
       <h3 className="PredefinedSettings__title">Predefined options</h3>
       <div className="PredefinedSettings__wrapper">
         <button
@@ -51,7 +51,7 @@ function PredefinedSettings(props) {
           10 + 10
         </button>
       </div>
-    </section>
+    </article>
   );
 }
 

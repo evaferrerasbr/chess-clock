@@ -11,20 +11,17 @@ function InputPlayNumber(props) {
 
   return (
     <>
-      <label
-        className="SetupForm__label SetupForm__label--short"
-        htmlFor="playNumber"
-      >
+      <label className="SetupForm__label SetupForm__label" htmlFor="playNumber">
+        <input
+          className="SetupForm__input"
+          id="playNumber"
+          type="number"
+          name="playNumber"
+          value={playNumber}
+          onChange={handleChange}
+        />
         Play number
       </label>
-      <input
-        className="SetupForm__input"
-        id="playNumber"
-        type="number"
-        name="playNumber"
-        value={playNumber}
-        onChange={handleChange}
-      />
     </>
   );
 }

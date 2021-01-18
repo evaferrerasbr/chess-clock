@@ -12,16 +12,16 @@ function InputIncAfterEachPlay(props) {
   return (
     <>
       <label className="SetupForm__label" htmlFor="incAfterEachPlay">
+        <input
+          className="SetupForm__input"
+          id="incAfterEachPlay"
+          type="number"
+          name="incAfterEachPlay"
+          value={incAfterEachPlay}
+          onChange={handleChange}
+        />
         Increment of seconds after each play
       </label>
-      <input
-        className="SetupForm__input"
-        id="incAfterEachPlay"
-        type="number"
-        name="incAfterEachPlay"
-        value={incAfterEachPlay}
-        onChange={handleChange}
-      />
     </>
   );
 }

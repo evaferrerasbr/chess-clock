@@ -1,14 +1,19 @@
 @import './core/variables.scss';
 
 .PredefinedSettings {
-  margin: 15px auto 30px auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 300px;
+  margin-right: 5px;
   &__title {
     font-size: 1rem;
     margin-bottom: 10px;
     font-weight: 100;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   &__button {
     height: 25px;
@@ -16,8 +21,6 @@
     margin: 3px;
     border-radius: 3px;
     border-style: none;
-    background-color: $color-dark;
-    color: $color-light;
     cursor: pointer;
   }
 }

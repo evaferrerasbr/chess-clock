@@ -6,9 +6,9 @@
   justify-content: center;
   align-items: center;
   &__img {
-    height: 80px;
+    height: 60px;
     @include desktop {
-      height: 100px;
+      height: 80px;
     }
   }
 }
