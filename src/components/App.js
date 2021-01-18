@@ -45,8 +45,8 @@ function App() {
 
   useEffect(() => {
     if (!isStarted) {
-      setWhiteCounter(totalMinutes * 60);
-      setBlackCounter(totalMinutes * 60);
+      setWhiteCounter(totalMinutes * 600);
+      setBlackCounter(totalMinutes * 600);
     }
   }, [totalMinutes, isStarted]);
 
@@ -58,7 +58,7 @@ function App() {
         } else if (!whitesTurn && blackCounter > 0) {
           setBlackCounter((blackCounter) => blackCounter - 1);
         }
-      }, 1000);
+      }, 100);
       return () => clearInterval(interval);
     }
   }, [isStarted, whitesTurn, isStopped, whiteCounter, blackCounter]);
@@ -80,11 +80,11 @@ function App() {
   useEffect(() => {
     if (whitesTurn && afterFirstTurn && !isStopped) {
       setBlackCounter(
-        (blackCounter) => blackCounter + parseInt(incAfterEachPlay)
+        (blackCounter) => blackCounter + parseInt(incAfterEachPlay * 10)
       );
     } else if (!whitesTurn && afterFirstTurn && !isStopped) {
       setWhiteCounter(
-        (whiteCounter) => whiteCounter + parseInt(incAfterEachPlay)
+        (whiteCounter) => whiteCounter + parseInt(incAfterEachPlay * 10)
       );
     }
   }, [whitesTurn, incAfterEachPlay, afterFirstTurn, isStopped]);
@@ -92,10 +92,10 @@ function App() {
   useEffect(() => {
     if (numberOfPlays === playNumber * 2) {
       setWhiteCounter(
-        (whiteCounter) => whiteCounter + parseInt(incOfMinutes) * 60
+        (whiteCounter) => whiteCounter + parseInt(incOfMinutes) * 600
       );
       setBlackCounter(
-        (blackCounter) => blackCounter + parseInt(incOfMinutes) * 60
+        (blackCounter) => blackCounter + parseInt(incOfMinutes) * 600
       );
     }
   }, [numberOfPlays, incOfMinutes, playNumber]);

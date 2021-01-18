@@ -9,13 +9,13 @@ function Clock(props) {
         colour === 'white' ? 'Clock--white' : 'Clock--black'
       }`}
     >
-      {counter % 60 < 10 ? (
+      {counter % 600 < 100 ? (
         <p className="Clock__numbers">
-          {Math.floor(counter / 60)}:{`0${counter % 60}`}
+          {Math.floor(counter / 600)}:{`0${Math.floor(counter / 10) % 60}`}
         </p>
       ) : (
         <p className="Clock__numbers">
-          {Math.floor(counter / 60)}:{counter % 60}
+          {Math.floor(counter / 600)}:{Math.floor(counter / 10) % 60}
         </p>
       )}
     </article>
