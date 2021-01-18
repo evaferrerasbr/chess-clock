@@ -20,7 +20,8 @@ function InputIncOfMinutes(props) {
           value={incOfMinutes}
           onChange={handleChange}
         />
-        Increment of minutes at selected play
+        Increment of <span className="SetupForm__bold">minutes</span> after
+        selected play
       </label>
     </>
   );

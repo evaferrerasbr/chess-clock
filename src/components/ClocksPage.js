@@ -7,6 +7,7 @@ function ClocksPage(props) {
     whiteCounter,
     blackCounter,
     whitesForLeft,
+    handleClockColours,
     isStarted,
     isStopped,
     handleStart,
@@ -58,11 +59,16 @@ function ClocksPage(props) {
     }
   };
 
+  const handleClick = () => {
+    handleClockColours();
+  };
+
   return (
     <section className="ClocksPage">
       <h2 className="ClocksPage__title">
         Step 3: Start and press any key to change turns
       </h2>
+      <button onClick={handleClick}>Change colours</button>
       {changeButtons()}
       <article className="ClocksPage__clocks">
         <Clock
@@ -75,7 +81,7 @@ function ClocksPage(props) {
         />
       </article>
       <button className="ClocksPage__button" type="button">
-        <Link className="ClocksPage__button--link" to="/colours">
+        <Link className="ClocksPage__button--link" to="/">
           Go back
         </Link>
       </button>

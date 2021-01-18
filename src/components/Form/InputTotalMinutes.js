@@ -23,7 +23,7 @@ function InputTotalMinutes(props) {
           value={totalMinutes}
           onChange={handleChange}
         />
-        Minutes for each player
+        Total minutes for each player
       </label>
     </>
   );

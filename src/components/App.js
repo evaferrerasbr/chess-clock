@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import { setLocalStorage, getFromLocalStorage } from '../services/localstorage';
 import Header from './Header';
 import Landing from './Landing';
-import ColourOptions from './ColourOptions';
 import ClocksPage from './ClocksPage';
 import GameOver from './GameOver';
 import Footer from './Footer';
@@ -138,12 +137,8 @@ function App() {
     setIncOfMinutes('0');
   };
 
-  const handleColourOptions = (selectedClock) => {
-    if (selectedClock === 'left') {
-      setWhitesForLeft(true);
-    } else {
-      setWhitesForLeft(false);
-    }
+  const handleClockColours = () => {
+    setWhitesForLeft((whitesForLeft) => !whitesForLeft);
   };
 
   const handleStart = () => {
@@ -166,6 +161,7 @@ function App() {
     setPlayNumber('');
     setIncOfMinutes('');
     setFormIsFilled(false);
+    setWhitesForLeft(true);
     setIsStarted(false);
     setIsStopped(false);
     setWhitesTurn(true);
@@ -193,9 +189,6 @@ function App() {
                 handleReset={handleReset}
               />
             </Route>
-            <Route path="/colours">
-              <ColourOptions handleColourOptions={handleColourOptions} />
-            </Route>
             <Route path="/game">
               {whiteCounter && blackCounter !== 0 ? (
                 <ClocksPage
@@ -206,6 +199,7 @@ function App() {
                   whiteCounter={whiteCounter}
                   blackCounter={blackCounter}
                   whitesForLeft={whitesForLeft}
+                  handleClockColours={handleClockColours}
                   isStarted={isStarted}
                   isStopped={isStopped}
                   handleStart={handleStart}

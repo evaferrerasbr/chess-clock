@@ -20,7 +20,8 @@ function InputIncAfterEachPlay(props) {
           value={incAfterEachPlay}
           onChange={handleChange}
         />
-        Increment of seconds after each play
+        Increment of <span className="SetupForm__bold">seconds</span> after each
+        play
       </label>
     </>
   );

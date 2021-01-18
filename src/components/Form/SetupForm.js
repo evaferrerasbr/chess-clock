@@ -17,22 +17,26 @@ function SetupForm(props) {
     <>
       <form className="SetupForm">
         <h3 className="SetupForm__title">Personalized options</h3>
-        <InputTotalMinutes
-          totalMinutes={totalMinutes}
-          handleInputChange={handleInputChange}
-        />
-        <InputIncAfterEachPlay
-          incAfterEachPlay={incAfterEachPlay}
-          handleInputChange={handleInputChange}
-        />
-        <InputPlayNumber
-          playNumber={playNumber}
-          handleInputChange={handleInputChange}
-        />
-        <InputIncOfMinutes
-          incOfMinutes={incOfMinutes}
-          handleInputChange={handleInputChange}
-        />
+        <div className="SetupForm__wrapper SetupForm__wrapper--up">
+          <InputTotalMinutes
+            totalMinutes={totalMinutes}
+            handleInputChange={handleInputChange}
+          />
+          <InputIncAfterEachPlay
+            incAfterEachPlay={incAfterEachPlay}
+            handleInputChange={handleInputChange}
+          />
+        </div>
+        <div className="SetupForm__wrapper SetupForm__wrapper--down">
+          <InputPlayNumber
+            playNumber={playNumber}
+            handleInputChange={handleInputChange}
+          />
+          <InputIncOfMinutes
+            incOfMinutes={incOfMinutes}
+            handleInputChange={handleInputChange}
+          />
+        </div>
       </form>
     </>
   );
