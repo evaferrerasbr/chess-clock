@@ -11,12 +11,17 @@ function SetupForm(props) {
     playNumber,
     incOfMinutes,
     handleInputChange,
+    handleReset,
   } = props;
+
+  const handleClick = () => {
+    handleReset();
+  };
 
   return (
     <>
       <form className="SetupForm">
-        <h3 className="SetupForm__title">Personalized options</h3>
+        <h3 className="SetupForm__title">Personalize your game</h3>
         <div className="SetupForm__wrapper SetupForm__wrapper--up">
           <InputTotalMinutes
             totalMinutes={totalMinutes}
@@ -37,6 +42,13 @@ function SetupForm(props) {
             handleInputChange={handleInputChange}
           />
         </div>
+        <button
+          className="SetupForm__button"
+          type="button"
+          onClick={handleClick}
+        >
+          Reset
+        </button>
       </form>
     </>
   );

@@ -15,20 +15,9 @@ function Landing(props) {
     handleReset,
   } = props;
 
-  const handleClick = () => {
-    handleReset();
-  };
-
   return (
     <>
       <section className="Landing__options">
-        <button
-          className="Landing__button Landing__button--reset"
-          type="button"
-          onClick={handleClick}
-        >
-          Reset
-        </button>
         <PredefinedSettings
           handlePredefinedSettings={handlePredefinedSettings}
         />

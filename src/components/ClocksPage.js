@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Clock from './Clock';
 import '../stylesheets/ClocksPage.scss';
+import arrows from '../images/arrows.png';
 
 function ClocksPage(props) {
   const {
@@ -29,7 +30,7 @@ function ClocksPage(props) {
     if (!isStarted) {
       return (
         <button
-          className="ClocksPage__button"
+          className="ClocksPage__button ClocksPage__button--start"
           type="button"
           onMouseDown={handleMouseDown}
         >
@@ -39,7 +40,7 @@ function ClocksPage(props) {
     } else if (isStarted && !isStopped) {
       return (
         <button
-          className="ClocksPage__button"
+          className="ClocksPage__button ClocksPage__button--stop"
           type="button"
           onMouseDown={handleMouseDown}
         >
@@ -49,7 +50,7 @@ function ClocksPage(props) {
     } else if (isStarted && isStopped) {
       return (
         <button
-          className="ClocksPage__button"
+          className="ClocksPage__button ClocksPage__button--start"
           type="button"
           onMouseDown={handleMouseDown}
         >
@@ -68,8 +69,13 @@ function ClocksPage(props) {
       <h2 className="ClocksPage__title">
         Start and press any key to change turns
       </h2>
-      <button onClick={handleClick}>Change colours</button>
       {changeButtons()}
+      <img
+        className="ClocksPage__img"
+        src={arrows}
+        alt="Change colours"
+        onClick={handleClick}
+      />
       <article className="ClocksPage__clocks">
         <Clock
           counter={whitesForLeft ? whiteCounter : blackCounter}
@@ -80,11 +86,16 @@ function ClocksPage(props) {
           colour={whitesForLeft ? 'black' : 'white'}
         />
       </article>
-      <button className="ClocksPage__button" type="button">
+      {/* <div className="ClocksPage__wrapper"> */}
+      <button
+        className="ClocksPage__button ClocksPage__button--goback"
+        type="button"
+      >
         <Link className="ClocksPage__button--link" to="/">
           Go back
         </Link>
       </button>
+      {/* </div> */}
     </section>
   );
 }

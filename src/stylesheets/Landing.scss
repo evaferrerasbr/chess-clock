@@ -11,7 +11,8 @@
   &__wrapper {
     margin-top: 5px;
     width: 304px;
-    position: relative;
+    display: flex;
+    justify-content: flex-end;
   }
   &__button {
     text-transform: uppercase;
@@ -25,12 +26,7 @@
     background-color: #4b648a;
     color: white;
     &--reset {
-      margin-bottom: 10px;
-      background-color: #9dd465;
-    }
-    &--next {
-      position: absolute;
-      right: 0px;
+      background-color: #4b648a;
     }
     &--link {
       text-decoration: none;
@@ -42,8 +38,6 @@
       color: black;
       border: none;
       cursor: default;
-      position: absolute;
-      right: 0px;
     }
   }
 }
