@@ -1,19 +1,17 @@
 @import './core/variables.scss';
 
 .Landing {
-  &__title {
-    font-size: 1rem;
-    text-align: center;
-  }
   &__options {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding: 10px;
-    margin: 20px;
+    margin: 5px;
   }
   &__wrapper {
-    display: flex;
-    justify-content: center;
+    margin-top: 5px;
+    width: 304px;
+    position: relative;
   }
   &__button {
     margin: 3px;
@@ -22,8 +20,15 @@
     border-radius: 3px;
     border-style: none;
     cursor: pointer;
-    background-color: white;
-    border: 1px solid grey;
+    background-color: #119da4;
+    color: white;
+    &--reset {
+      margin-bottom: 5px;
+    }
+    &--next {
+      position: absolute;
+      right: 0px;
+    }
     &--link {
       text-decoration: none;
       color: inherit;
@@ -31,8 +36,11 @@
     }
     &--disabled {
       background-color: #f0f0f0;
+      color: black;
       border: none;
       cursor: default;
+      position: absolute;
+      right: 0px;
     }
   }
 }

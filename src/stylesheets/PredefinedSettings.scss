@@ -2,12 +2,12 @@
 
 .PredefinedSettings {
   width: 300px;
-  margin-right: 5px;
-  border-radius: 5px;
+  margin-bottom: 5px;
+  border-radius: 1px;
   padding: 10px;
-  background-color: #f0f0f0;
+  border: 2px solid #313c38;
   &__title {
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin-bottom: 10px;
     font-weight: 100;
     text-align: center;
@@ -15,8 +15,7 @@
   }
   &__wrapper {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
   }
   &__button {
     height: 25px;
@@ -25,7 +24,7 @@
     border-radius: 3px;
     border-style: none;
     cursor: pointer;
-    background-color: white;
-    border: 1px solid grey;
+    background-color: #119da4;
+    color: white;
   }
 }

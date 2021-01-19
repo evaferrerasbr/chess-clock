@@ -21,8 +21,14 @@ function Landing(props) {
 
   return (
     <>
-      <h2 className="Landing__title">Configure your game</h2>
       <section className="Landing__options">
+        <button
+          className="Landing__button Landing__button--reset"
+          type="button"
+          onClick={handleClick}
+        >
+          Reset
+        </button>
         <PredefinedSettings
           handlePredefinedSettings={handlePredefinedSettings}
         />
@@ -35,27 +41,27 @@ function Landing(props) {
           handleInputChange={handleInputChange}
           handleReset={handleReset}
         />
-      </section>
-      <div className="Landing__wrapper">
-        {formIsFilled ? (
-          <button className="Landing__button" type="button">
-            <Link className="Landing__button--link" to="/game">
+        <div className="Landing__wrapper">
+          {formIsFilled ? (
+            <button
+              className="Landing__button Landing__button--next"
+              type="button"
+            >
+              <Link className="Landing__button--link" to="/game">
+                Next
+              </Link>
+            </button>
+          ) : (
+            <button
+              className="Landing__button Landing__button--next Landing__button--disabled"
+              type="button"
+              disabled
+            >
               Next
-            </Link>
-          </button>
-        ) : (
-          <button
-            className="Landing__button Landing__button--disabled"
-            type="button"
-            disabled
-          >
-            Next
-          </button>
-        )}
-        <button className="Landing__button" type="button" onClick={handleClick}>
-          Reset
-        </button>
-      </div>
+            </button>
+          )}
+        </div>
+      </section>
     </>
   );
 }
