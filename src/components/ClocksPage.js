@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Clock from './Clock';
 import '../stylesheets/ClocksPage.scss';
-import arrows from '../images/arrows.png';
+import arrows from '../images/arrows.svg';
 
 function ClocksPage(props) {
   const {
@@ -86,10 +86,7 @@ function ClocksPage(props) {
           colour={whitesForLeft ? 'black' : 'white'}
         />
       </article>
-      <button
-        className="ClocksPage__button ClocksPage__button--goback"
-        type="button"
-      >
+      <button className="ClocksPage__button" type="button">
         <Link className="ClocksPage__button--link" to="/">
           Go back
         </Link>

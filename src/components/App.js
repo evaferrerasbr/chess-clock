@@ -211,6 +211,7 @@ function App() {
                 <GameOver
                   whiteCounter={whiteCounter}
                   blackCounter={blackCounter}
+                  handleReset={handleReset}
                 />
               )}
             </Route>
