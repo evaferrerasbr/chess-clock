@@ -1,18 +1,19 @@
 @import './core/variables.scss';
+@import './core/mixins.scss';
 
 .SetupForm {
+  width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 300px;
   border-radius: 1px;
-  padding: 10px;
+  padding: 5px;
   font-size: 0.75rem;
-  border: 2px solid #4b648a;
+  border: 2px solid $color-primary;
   &__title {
-    font-weight: 100;
     font-size: 0.9rem;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    font-weight: 100;
     text-align: center;
     text-transform: uppercase;
   }
@@ -20,12 +21,12 @@
     padding: 1px 5px;
     &--up {
       width: 258px;
-      background-color: #d0dff4;
+      background-color: $color-secondary;
       margin-bottom: 5px;
     }
     &--down {
       width: 258px;
-      background-color: #d0dff4;
+      background-color: $color-secondary;
       margin-bottom: 5px;
     }
   }
@@ -45,16 +46,10 @@
     font-weight: bold;
   }
   &__button {
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    margin-top: 3px;
-    height: 25px;
-    width: 75px;
-    border-radius: 3px;
-    border-style: none;
-    cursor: pointer;
-    background-color: #4b648a;
-    color: white;
+    @include button();
+    &--reset {
+      margin: 3px;
+    }
   }
 }
 

@@ -32,17 +32,17 @@ function Landing(props) {
         />
         <div className="Landing__wrapper">
           {formIsFilled ? (
-            <button
-              className="Landing__button Landing__button--next"
-              type="button"
-            >
-              <Link className="Landing__button--link" to="/game">
+            <button className="Landing__button" type="button">
+              <Link
+                className="Landing__button Landing__button--link"
+                to="/game"
+              >
                 Next
               </Link>
             </button>
           ) : (
             <button
-              className="Landing__button Landing__button--next Landing__button--disabled"
+              className="Landing__button Landing__button--disabled"
               type="button"
               disabled
             >

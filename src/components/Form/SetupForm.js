@@ -43,7 +43,7 @@ function SetupForm(props) {
           />
         </div>
         <button
-          className="SetupForm__button"
+          className="SetupForm__button SetupForm__button--reset"
           type="button"
           onClick={handleClick}
         >

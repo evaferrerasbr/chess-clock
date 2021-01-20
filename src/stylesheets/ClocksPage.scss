@@ -1,4 +1,5 @@
 @import './core/variables.scss';
+@import './core/mixins.scss';
 
 .ClocksPage {
   display: flex;
@@ -13,7 +14,7 @@
     display: flex;
     justify-content: space-between;
     &--black {
-      background-color: black;
+      background-color: $color-dark;
     }
   }
   &__img {
@@ -26,28 +27,14 @@
     width: 740px;
   }
   &__button {
-    text-transform: uppercase;
     margin: 10px;
-    height: 25px;
-    width: 75px;
-    border-radius: 3px;
-    border-style: none;
-    color: black;
-    cursor: pointer;
-    &--start {
-      background-color: #98db4b;
-    }
+    @include button();
     &--stop {
-      background-color: rgb(247, 27, 27);
-    }
-    &--goback {
-      background-color: white;
-      color: black;
+      background-color: $color-alert;
     }
     &--link {
       text-decoration: none;
       color: inherit;
-      text-decoration: underline;
     }
   }
 }

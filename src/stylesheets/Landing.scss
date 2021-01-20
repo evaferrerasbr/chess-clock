@@ -1,42 +1,29 @@
 @import './core/variables.scss';
+@import './core/mixins.scss';
 
 .Landing {
   &__options {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
-    margin: 5px;
+    margin: 15px;
   }
   &__wrapper {
-    margin-top: 5px;
-    width: 304px;
     display: flex;
     justify-content: flex-end;
+    margin-top: 5px;
+    width: 304px;
   }
   &__button {
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    margin: 3px;
-    height: 25px;
-    width: 75px;
-    border-radius: 3px;
-    border-style: none;
-    cursor: pointer;
-    background-color: #4b648a;
-    color: white;
-    &--reset {
-      background-color: #4b648a;
-    }
+    @include button();
     &--link {
       text-decoration: none;
       color: inherit;
-      padding: 5px 20px;
+      padding: 5px 13px;
     }
     &--disabled {
-      background-color: #f0f0f0;
-      color: black;
-      border: none;
+      background-color: $color-disabled;
+      color: $color-dark;
       cursor: default;
     }
   }

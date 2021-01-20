@@ -146,8 +146,9 @@ function App() {
   };
 
   const handleStop = () => {
-    setWhitesTurn(!whitesTurn);
+    setWhitesTurn((whitesTurn) => !whitesTurn);
     setIsStopped(true);
+    setAfterFirstTurn(true);
     setNumberOfPlays((numberOfPlays) => numberOfPlays + 1);
   };
 

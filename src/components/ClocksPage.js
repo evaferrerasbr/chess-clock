@@ -86,7 +86,6 @@ function ClocksPage(props) {
           colour={whitesForLeft ? 'black' : 'white'}
         />
       </article>
-      {/* <div className="ClocksPage__wrapper"> */}
       <button
         className="ClocksPage__button ClocksPage__button--goback"
         type="button"
@@ -95,7 +94,6 @@ function ClocksPage(props) {
           Go back
         </Link>
       </button>
-      {/* </div> */}
     </section>
   );
 }
