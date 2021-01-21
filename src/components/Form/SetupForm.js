@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import InputTotalMinutes from './InputTotalMinutes';
 import InputIncAfterEachPlay from './InputIncAfterEachPlay';
 import InputPlayNumber from './InputPlayNumber';
@@ -11,7 +11,6 @@ function SetupForm(props) {
     incAfterEachPlay,
     playNumber,
     incOfMinutes,
-    isClicked,
     handleInputChange,
     handleReset,
   } = props;
@@ -22,8 +21,8 @@ function SetupForm(props) {
 
   return (
     <>
-      <h3 className="SetupForm__title">Personalized options</h3>
       <form className="SetupForm">
+        <h3 className="SetupForm__title">Personalize your game</h3>
         <div className="SetupForm__wrapper SetupForm__wrapper--up">
           <InputTotalMinutes
             totalMinutes={totalMinutes}
@@ -44,33 +43,25 @@ function SetupForm(props) {
             handleInputChange={handleInputChange}
           />
         </div>
-        <div className="SetupForm__wrapper--button">
-          {isClicked ? (
-            <button className="SetupForm__button" type="button">
-              <Link className="SetupForm__button--link" to="/colours">
-                Next
-              </Link>
-            </button>
-          ) : (
-            <button
-              className="SetupForm__button SetupForm__button--disabled"
-              type="button"
-              disabled
-            >
-              Next
-            </button>
-          )}
-          <button
-            className="SetupForm__button"
-            type="button"
-            onClick={handleClick}
-          >
-            Reset
-          </button>
-        </div>
+        <button
+          className="SetupForm__button SetupForm__button--reset"
+          type="button"
+          onClick={handleClick}
+        >
+          Reset
+        </button>
       </form>
     </>
   );
 }
+
+SetupForm.propTypes = {
+  totalMinutes: PropTypes.string,
+  incAfterEachPlay: PropTypes.string,
+  playNumber: PropTypes.string,
+  incOfMinutes: PropTypes.string,
+  handleInputChange: PropTypes.func,
+  handleReset: PropTypes.func,
+};
 
 export default SetupForm;

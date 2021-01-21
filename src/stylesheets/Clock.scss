@@ -1,15 +1,39 @@
 @import './core/variables.scss';
+@import './core/mixins.scss';
 
 .Clock {
-  height: 180px;
-  width: 350px;
-  border: 1px solid $color-dark;
+  font-family: $font-clock;
+  height: 140px;
+  width: 280px;
+  @include tablet() {
+    height: 180px;
+    width: 350px;
+  }
+  @include desktop() {
+    height: 220px;
+    width: 400px;
+  }
   border-radius: 5px;
-  margin: 10px;
+  margin: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
+  &--white {
+    background-color: $color-light;
+    color: $color-dark;
+    border: 2px solid $color-dark;
+  }
+  &--black {
+    background-color: $color-dark;
+    color: $color-light;
+  }
   &__numbers {
-    font-size: 7rem;
+    font-size: 6rem;
+    @include tablet() {
+      font-size: 7rem;
+    }
+    @include desktop() {
+      font-size: 8rem;
+    }
   }
 }

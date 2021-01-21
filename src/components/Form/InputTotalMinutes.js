@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function InputTotalMinutes(props) {
   const { totalMinutes, handleInputChange } = props;
 
@@ -12,21 +14,26 @@ function InputTotalMinutes(props) {
   return (
     <>
       <label
-        className="SetupForm__label SetupForm__label--short"
+        className="SetupForm__label SetupForm__label"
         htmlFor="totalMinutes"
       >
-        Minutes for each player
+        <input
+          className="SetupForm__input"
+          id="totalMinutes"
+          type="number"
+          name="totalMinutes"
+          value={totalMinutes}
+          onChange={handleChange}
+        />
+        Total minutes for each player
       </label>
-      <input
-        className="SetupForm__input"
-        id="totalMinutes"
-        type="number"
-        name="totalMinutes"
-        value={totalMinutes}
-        onChange={handleChange}
-      />
     </>
   );
 }
+
+InputTotalMinutes.propTypes = {
+  totalMinutes: PropTypes.string,
+  handleInputChange: PropTypes.func,
+};
 
 export default InputTotalMinutes;

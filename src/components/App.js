@@ -1,29 +1,142 @@
 import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { setLocalStorage, getFromLocalStorage } from '../services/localstorage';
 import Header from './Header';
 import Landing from './Landing';
-import ColourOptions from './ColourOptions';
-import WhitesLeft from './WhitesLeft';
-import WhitesRight from './WhitesRight';
+import ClocksPage from './ClocksPage';
+import GameOver from './GameOver';
 import Footer from './Footer';
 import '../stylesheets/App.scss';
 
-function App() {
-  const [totalMinutes, setTotalMinutes] = useState('');
-  const [incAfterEachPlay, setIncAfterEachPlay] = useState('');
-  const [playNumber, setPlayNumber] = useState('');
-  const [incOfMinutes, setIncOfMinutes] = useState('');
-  const [isClicked, setIsClicked] = useState(false);
+const dataLocal = getFromLocalStorage();
 
+function App() {
+  //STATE
+  //setup
+  const [totalMinutes, setTotalMinutes] = useState(dataLocal.totalMinutes);
+  const [incAfterEachPlay, setIncAfterEachPlay] = useState(
+    dataLocal.incAfterEachPlay
+  );
+  const [playNumber, setPlayNumber] = useState(dataLocal.playNumber);
+  const [incOfMinutes, setIncOfMinutes] = useState(dataLocal.incOfMinutes);
+  const [formIsFilled, setFormIsFilled] = useState(dataLocal.formIsFilled);
+  const [whitesForLeft, setWhitesForLeft] = useState(dataLocal.whitesForLeft);
+  //counters
+  const [whiteCounter, setWhiteCounter] = useState(dataLocal.whiteCounter);
+  const [blackCounter, setBlackCounter] = useState(dataLocal.blackCounter);
+  //game
+  const [afterFirstTurn, setAfterFirstTurn] = useState(
+    dataLocal.afterFirstTurn
+  );
+  const [whitesTurn, setWhitesTurn] = useState(dataLocal.whitesTurn);
+  const [numberOfPlays, setNumberOfPlays] = useState(dataLocal.numberOfPlays);
+  const [isStarted, setIsStarted] = useState(dataLocal.isStarted);
+  const [isStopped, setIsStopped] = useState(dataLocal.isStopped);
+
+  //HOOKS
   useEffect(() => {
     if (totalMinutes && incAfterEachPlay && playNumber && incOfMinutes) {
-      setIsClicked(true);
+      setFormIsFilled(true);
     } else {
-      setIsClicked(false);
+      setFormIsFilled(false);
     }
   }, [totalMinutes, incAfterEachPlay, playNumber, incOfMinutes]);
 
+  useEffect(() => {
+    if (!isStarted) {
+      setWhiteCounter(totalMinutes * 600);
+      setBlackCounter(totalMinutes * 600);
+    }
+  }, [totalMinutes, isStarted]);
+
+  useEffect(() => {
+    if (isStarted && !isStopped) {
+      const interval = setInterval(() => {
+        if (whitesTurn && whiteCounter > 0) {
+          setWhiteCounter((whiteCounter) => whiteCounter - 1);
+        } else if (!whitesTurn && blackCounter > 0) {
+          setBlackCounter((blackCounter) => blackCounter - 1);
+        }
+      }, 100);
+      return () => clearInterval(interval);
+    }
+  }, [isStarted, whitesTurn, isStopped, whiteCounter, blackCounter]);
+
+  useEffect(() => {
+    if (isStarted) {
+      const handleKeyUp = () => {
+        setWhitesTurn(!whitesTurn);
+        setAfterFirstTurn(true);
+        setNumberOfPlays((numberOfPlays) => numberOfPlays + 1);
+      };
+      window.addEventListener('keyup', handleKeyUp);
+      return () => {
+        window.removeEventListener('keyup', handleKeyUp);
+      };
+    }
+  });
+
+  //for test in tablet
+  useEffect(() => {
+    if (isStarted) {
+      const handleTouchStart = () => {
+        setWhitesTurn(!whitesTurn);
+        setAfterFirstTurn(true);
+        setNumberOfPlays((numberOfPlays) => numberOfPlays + 1);
+      };
+      window.addEventListener('touchStart', handleTouchStart);
+      return () => {
+        window.removeEventListener('touchStart', handleTouchStart);
+      };
+    }
+  });
+
+  useEffect(() => {
+    if (whitesTurn && afterFirstTurn && !isStopped) {
+      setBlackCounter(
+        (blackCounter) => blackCounter + parseInt(incAfterEachPlay * 10)
+      );
+    } else if (!whitesTurn && afterFirstTurn && !isStopped) {
+      setWhiteCounter(
+        (whiteCounter) => whiteCounter + parseInt(incAfterEachPlay * 10)
+      );
+    }
+  }, [whitesTurn, incAfterEachPlay, afterFirstTurn, isStopped]);
+
+  useEffect(() => {
+    if (numberOfPlays === playNumber * 2) {
+      setWhiteCounter(
+        (whiteCounter) => whiteCounter + parseInt(incOfMinutes) * 600
+      );
+      setBlackCounter(
+        (blackCounter) => blackCounter + parseInt(incOfMinutes) * 600
+      );
+    }
+  }, [numberOfPlays, incOfMinutes, playNumber]);
+
+  useEffect(() => {
+    setLocalStorage(
+      totalMinutes,
+      incAfterEachPlay,
+      playNumber,
+      incOfMinutes,
+      formIsFilled,
+      whitesForLeft,
+      whiteCounter,
+      blackCounter,
+      whitesTurn,
+      isStarted,
+      isStopped,
+      afterFirstTurn,
+      numberOfPlays
+    );
+  });
+
+  //EVENT HANDLERS
   const handleInputChange = (data) => {
+    if (isStarted) {
+      handleReset();
+    }
     if (data.name === 'totalMinutes') {
       setTotalMinutes(data.value);
     } else if (data.name === 'incAfterEachPlay') {
@@ -36,20 +149,48 @@ function App() {
   };
 
   const handlePredefinedSettings = (data) => {
+    handleReset();
+    setFormIsFilled(true);
     setTotalMinutes(data.minutes);
     setIncAfterEachPlay(data.seconds);
     setPlayNumber('0');
     setIncOfMinutes('0');
   };
 
+  const handleClockColours = () => {
+    setWhitesForLeft((whitesForLeft) => !whitesForLeft);
+  };
+
+  const handleStart = () => {
+    setIsStarted(true);
+  };
+
+  const handleStop = () => {
+    setWhitesTurn((whitesTurn) => !whitesTurn);
+    setIsStopped(true);
+    setAfterFirstTurn(true);
+    setNumberOfPlays((numberOfPlays) => numberOfPlays + 1);
+  };
+
+  const handleContinue = () => {
+    setIsStopped(false);
+  };
+
   const handleReset = () => {
     setTotalMinutes('');
     setIncAfterEachPlay('');
-    setPlayNumber('');
-    setIncOfMinutes('');
-    setIsClicked(false);
+    setPlayNumber('0');
+    setIncOfMinutes('0');
+    setFormIsFilled(false);
+    setWhitesForLeft(true);
+    setIsStarted(false);
+    setIsStopped(false);
+    setWhitesTurn(true);
+    setAfterFirstTurn(false);
+    setNumberOfPlays(0);
   };
 
+  //JSX
   return (
     <>
       <Header />
@@ -63,30 +204,36 @@ function App() {
                 incAfterEachPlay={incAfterEachPlay}
                 playNumber={playNumber}
                 incOfMinutes={incOfMinutes}
-                isClicked={isClicked}
+                formIsFilled={formIsFilled}
                 handleInputChange={handleInputChange}
                 handlePredefinedSettings={handlePredefinedSettings}
                 handleReset={handleReset}
               />
             </Route>
-            <Route path="/colours">
-              <ColourOptions />
-            </Route>
-            <Route path="/whites-left">
-              <WhitesLeft
-                totalMinutes={totalMinutes}
-                incAfterEachPlay={incAfterEachPlay}
-                playNumber={playNumber}
-                incOfMinutes={incOfMinutes}
-              />
-            </Route>
-            <Route path="/whites-right">
-              <WhitesRight
-                totalMinutes={totalMinutes}
-                incAfterEachPlay={incAfterEachPlay}
-                playNumber={playNumber}
-                incOfMinutes={incOfMinutes}
-              />
+            <Route path="/game">
+              {whiteCounter && blackCounter !== 0 ? (
+                <ClocksPage
+                  totalMinutes={totalMinutes}
+                  incAfterEachPlay={incAfterEachPlay}
+                  playNumber={playNumber}
+                  incOfMinutes={incOfMinutes}
+                  whiteCounter={whiteCounter}
+                  blackCounter={blackCounter}
+                  whitesForLeft={whitesForLeft}
+                  handleClockColours={handleClockColours}
+                  isStarted={isStarted}
+                  isStopped={isStopped}
+                  handleStart={handleStart}
+                  handleStop={handleStop}
+                  handleContinue={handleContinue}
+                />
+              ) : (
+                <GameOver
+                  whiteCounter={whiteCounter}
+                  blackCounter={blackCounter}
+                  handleReset={handleReset}
+                />
+              )}
             </Route>
           </main>
         </>

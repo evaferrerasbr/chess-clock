@@ -1,0 +1,24 @@
+@import './core/variables.scss';
+@import './core/mixins.scss';
+
+.GameOver {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__text {
+    font-size: 1.5rem;
+    margin: 20px 0px;
+    font-weight: 100;
+  }
+  &__img {
+    width: 280px;
+    margin-bottom: 15px;
+  }
+  &__button {
+    @include button();
+    &--link {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}

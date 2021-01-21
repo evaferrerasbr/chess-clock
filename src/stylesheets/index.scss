@@ -1,8 +1,9 @@
-@import './core/mixins.scss';
 @import './core/variables.scss';
+@import './core/mixins.scss';
 
 * {
   margin: 0px;
   padding: 0px;
   font-family: $font-main;
+  box-sizing: border-box;
 }
