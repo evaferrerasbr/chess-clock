@@ -5,8 +5,8 @@ const getFromLocalStorage = () => {
     : {
         totalMinutes: '',
         incAfterEachPlay: '',
-        playNumber: '',
-        incOfMinutes: '',
+        playNumber: '0',
+        incOfMinutes: '0',
         formIsFilled: false,
         whitesForLeft: false,
         whiteCounter: 0,

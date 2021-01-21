@@ -161,8 +161,8 @@ function App() {
   const handleReset = () => {
     setTotalMinutes('');
     setIncAfterEachPlay('');
-    setPlayNumber('');
-    setIncOfMinutes('');
+    setPlayNumber('0');
+    setIncOfMinutes('0');
     setFormIsFilled(false);
     setWhitesForLeft(true);
     setIsStarted(false);

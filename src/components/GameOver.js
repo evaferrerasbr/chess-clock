@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import timeout from '../images/timeout.gif';
 import '../stylesheets/GameOver.scss';
 
 function GameOver(props) {
@@ -19,6 +20,7 @@ function GameOver(props) {
   return (
     <article className="GameOver">
       {getFallenFlag()}
+      <img className="GameOver__img" src={timeout} alt="The time is out" />
       <button className="GameOver__button" onClick={handleClick}>
         <Link className="GameOver__button--link" to="/">
           Rematch?

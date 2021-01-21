@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Clock from './Clock';
-import '../stylesheets/ClocksPage.scss';
 import arrows from '../images/arrows.svg';
+import '../stylesheets/ClocksPage.scss';
 
 function ClocksPage(props) {
   const {
