@@ -84,9 +84,9 @@ function App() {
         setAfterFirstTurn(true);
         setNumberOfPlays((numberOfPlays) => numberOfPlays + 1);
       };
-      window.addEventListener('touchStart', handleTouchStart);
+      window.addEventListener('touchstart', handleTouchStart);
       return () => {
-        window.removeEventListener('touchStart', handleTouchStart);
+        window.removeEventListener('touchstart', handleTouchStart);
       };
     }
   });
