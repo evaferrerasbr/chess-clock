@@ -2,7 +2,10 @@
 @import './core/mixins.scss';
 
 .SetupForm {
-  width: 300px;
+  width: 280px;
+  @include tablet() {
+    width: 360px;
+  }
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,6 +13,7 @@
   padding: 5px;
   font-size: 0.75rem;
   border: 2px solid $color-primary;
+  margin-bottom: 5px;
   &__title {
     font-size: 0.9rem;
     margin-bottom: 10px;
@@ -23,11 +27,17 @@
       width: 258px;
       background-color: $color-secondary;
       margin-bottom: 5px;
+      @include tablet() {
+        width: 320px;
+      }
     }
     &--down {
       width: 258px;
       background-color: $color-secondary;
       margin-bottom: 5px;
+      @include tablet() {
+        width: 320px;
+      }
     }
   }
   &__label {

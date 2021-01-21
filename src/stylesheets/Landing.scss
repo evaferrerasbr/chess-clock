@@ -12,7 +12,10 @@
     display: flex;
     justify-content: flex-end;
     margin-top: 5px;
-    width: 304px;
+    width: 280px;
+    @include tablet() {
+      width: 360px;
+    }
   }
   &__button {
     @include button();

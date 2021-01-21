@@ -7,7 +7,7 @@
   align-items: center;
   &__title {
     font-size: 0.9rem;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     font-weight: 100;
   }
   &__img {
@@ -18,7 +18,7 @@
     cursor: pointer;
   }
   &__clocks {
-    margin: 5px 0px;
+    margin: 10px 0px;
     display: flex;
     flex-direction: column;
     @include tablet() {

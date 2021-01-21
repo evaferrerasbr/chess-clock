@@ -1,9 +1,13 @@
 @import './core/variables.scss';
+@import './core/mixins.scss';
 
 .App {
   &__title {
     font-size: 1rem;
     text-align: center;
     margin-bottom: 5px;
+    @include tablet() {
+      margin-bottom: 15px;
+    }
   }
 }

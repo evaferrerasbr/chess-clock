@@ -68,7 +68,7 @@ function ClocksPage(props) {
   return (
     <section className="ClocksPage">
       <h2 className="ClocksPage__title">
-        Start and press any key to change turns
+        Press any key or touch the screen to change
       </h2>
       {changeButtons()}
       <img

@@ -2,7 +2,10 @@
 @import './core/mixins.scss';
 
 .PredefinedSettings {
-  width: 300px;
+  width: 280px;
+  @include tablet() {
+    width: 360px;
+  }
   margin-bottom: 5px;
   border-radius: 1px;
   padding: 5px;
