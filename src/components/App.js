@@ -131,6 +131,8 @@ function App() {
   };
 
   const handlePredefinedSettings = (data) => {
+    handleReset();
+    setFormIsFilled(true);
     setTotalMinutes(data.minutes);
     setIncAfterEachPlay(data.seconds);
     setPlayNumber('0');
