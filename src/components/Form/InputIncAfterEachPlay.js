@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function InputIncAfterEachPlay(props) {
   const { incAfterEachPlay, handleInputChange } = props;
 
@@ -26,5 +28,10 @@ function InputIncAfterEachPlay(props) {
     </>
   );
 }
+
+InputIncAfterEachPlay.propTypes = {
+  incAfterEachPlay: PropTypes.string,
+  handleInputChange: PropTypes.func,
+};
 
 export default InputIncAfterEachPlay;

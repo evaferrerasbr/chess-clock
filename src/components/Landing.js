@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import PredefinedSettings from './PredefinedSettings';
 import SetupForm from './Form/SetupForm';
 import '../stylesheets/Landing.scss';
@@ -54,5 +55,16 @@ function Landing(props) {
     </>
   );
 }
+
+Landing.propTypes = {
+  totalMinutes: PropTypes.string,
+  incAfterEachPlay: PropTypes.string,
+  playNumber: PropTypes.string,
+  incOfMinutes: PropTypes.string,
+  formIsFilled: PropTypes.bool,
+  handleInputChange: PropTypes.func,
+  handlePredefinedSettings: PropTypes.func,
+  handleReset: PropTypes.func,
+};
 
 export default Landing;

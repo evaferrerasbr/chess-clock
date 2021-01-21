@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function InputPlayNumber(props) {
   const { playNumber, handleInputChange } = props;
 
@@ -25,5 +27,10 @@ function InputPlayNumber(props) {
     </>
   );
 }
+
+InputPlayNumber.propTypes = {
+  playNumber: PropTypes.string,
+  handleInputChange: PropTypes.func,
+};
 
 export default InputPlayNumber;

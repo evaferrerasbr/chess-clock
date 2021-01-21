@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import '../stylesheets/PredefinedSettings.scss';
 
 function PredefinedSettings(props) {
@@ -54,5 +55,9 @@ function PredefinedSettings(props) {
     </article>
   );
 }
+
+PredefinedSettings.propTypes = {
+  handlePredefinedSettings: PropTypes.func,
+};
 
 export default PredefinedSettings;

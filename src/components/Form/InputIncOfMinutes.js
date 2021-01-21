@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function InputIncOfMinutes(props) {
   const { incOfMinutes, handleInputChange } = props;
 
@@ -26,5 +28,10 @@ function InputIncOfMinutes(props) {
     </>
   );
 }
+
+InputIncOfMinutes.propTypes = {
+  incOfMinutes: PropTypes.string,
+  handleInputChange: PropTypes.func,
+};
 
 export default InputIncOfMinutes;

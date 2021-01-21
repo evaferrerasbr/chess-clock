@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import timeout from '../images/timeout.gif';
 import '../stylesheets/GameOver.scss';
 
@@ -29,5 +30,11 @@ function GameOver(props) {
     </article>
   );
 }
+
+GameOver.propTypes = {
+  whiteCounter: PropTypes.number,
+  blackCounter: PropTypes.number,
+  handleReset: PropTypes.func,
+};
 
 export default GameOver;

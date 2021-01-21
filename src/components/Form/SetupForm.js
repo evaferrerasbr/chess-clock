@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import InputTotalMinutes from './InputTotalMinutes';
 import InputIncAfterEachPlay from './InputIncAfterEachPlay';
 import InputPlayNumber from './InputPlayNumber';
@@ -53,5 +54,14 @@ function SetupForm(props) {
     </>
   );
 }
+
+SetupForm.propTypes = {
+  totalMinutes: PropTypes.string,
+  incAfterEachPlay: PropTypes.string,
+  playNumber: PropTypes.string,
+  incOfMinutes: PropTypes.string,
+  handleInputChange: PropTypes.func,
+  handleReset: PropTypes.func,
+};
 
 export default SetupForm;

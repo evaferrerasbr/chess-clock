@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import '../stylesheets/Clock.scss';
 
 function Clock(props) {
@@ -37,5 +38,10 @@ function Clock(props) {
     </article>
   );
 }
+
+Clock.propTypes = {
+  counter: PropTypes.number,
+  colour: PropTypes.string,
+};
 
 export default Clock;

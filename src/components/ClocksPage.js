@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Clock from './Clock';
 import arrows from '../images/arrows.svg';
 import '../stylesheets/ClocksPage.scss';
@@ -94,5 +95,17 @@ function ClocksPage(props) {
     </section>
   );
 }
+
+ClocksPage.propTypes = {
+  whiteCounter: PropTypes.number,
+  blackCounter: PropTypes.number,
+  whitesForLeft: PropTypes.bool,
+  handleClockColours: PropTypes.func,
+  isStarted: PropTypes.bool,
+  isStopped: PropTypes.bool,
+  handleStart: PropTypes.func,
+  handleStop: PropTypes.func,
+  handleContinue: PropTypes.func,
+};
 
 export default ClocksPage;

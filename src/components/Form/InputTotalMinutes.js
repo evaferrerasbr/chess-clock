@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function InputTotalMinutes(props) {
   const { totalMinutes, handleInputChange } = props;
 
@@ -28,5 +30,10 @@ function InputTotalMinutes(props) {
     </>
   );
 }
+
+InputTotalMinutes.propTypes = {
+  totalMinutes: PropTypes.string,
+  handleInputChange: PropTypes.func,
+};
 
 export default InputTotalMinutes;
