@@ -76,7 +76,6 @@ function App() {
     }
   });
 
-  //for test in tablet
   useEffect(() => {
     if (isStarted) {
       const handleTouchStart = () => {
