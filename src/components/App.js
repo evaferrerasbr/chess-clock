@@ -76,6 +76,21 @@ function App() {
     }
   });
 
+  //for test in tablet
+  useEffect(() => {
+    if (isStarted) {
+      const handleTouchStart = () => {
+        setWhitesTurn(!whitesTurn);
+        setAfterFirstTurn(true);
+        setNumberOfPlays((numberOfPlays) => numberOfPlays + 1);
+      };
+      window.addEventListener('touchStart', handleTouchStart);
+      return () => {
+        window.removeEventListener('touchStart', handleTouchStart);
+      };
+    }
+  });
+
   useEffect(() => {
     if (whitesTurn && afterFirstTurn && !isStopped) {
       setBlackCounter(
@@ -119,6 +134,9 @@ function App() {
 
   //EVENT HANDLERS
   const handleInputChange = (data) => {
+    if (isStarted) {
+      handleReset();
+    }
     if (data.name === 'totalMinutes') {
       setTotalMinutes(data.value);
     } else if (data.name === 'incAfterEachPlay') {
