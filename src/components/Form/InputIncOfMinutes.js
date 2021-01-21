@@ -29,6 +29,10 @@ function InputIncOfMinutes(props) {
   );
 }
 
+InputIncOfMinutes.defaultProps = {
+  incOfMinutes: '0',
+};
+
 InputIncOfMinutes.propTypes = {
   incOfMinutes: PropTypes.string,
   handleInputChange: PropTypes.func,

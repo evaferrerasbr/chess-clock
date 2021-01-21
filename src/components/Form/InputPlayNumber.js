@@ -28,6 +28,10 @@ function InputPlayNumber(props) {
   );
 }
 
+InputPlayNumber.defaultProps = {
+  playNumber: '0',
+};
+
 InputPlayNumber.propTypes = {
   playNumber: PropTypes.string,
   handleInputChange: PropTypes.func,
