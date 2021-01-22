@@ -2,6 +2,7 @@
 @import './core/mixins.scss';
 
 .App {
+  height: 75vh;
   &__title {
     font-size: 1rem;
     text-align: center;
