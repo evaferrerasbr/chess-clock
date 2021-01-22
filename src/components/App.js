@@ -8,6 +8,7 @@ import GameOver from './GameOver';
 import Footer from './Footer';
 import '../stylesheets/App.scss';
 
+//gest the info from localstorage.js and saves it in a const that will be used for app state
 const dataLocal = getFromLocalStorage();
 
 function App() {
@@ -27,13 +28,14 @@ function App() {
   //game
   const [afterFirstTurn, setAfterFirstTurn] = useState(
     dataLocal.afterFirstTurn
-  );
+  ); //prevents an initial increment when the user press start
   const [whitesTurn, setWhitesTurn] = useState(dataLocal.whitesTurn);
   const [numberOfPlays, setNumberOfPlays] = useState(dataLocal.numberOfPlays);
   const [isStarted, setIsStarted] = useState(dataLocal.isStarted);
   const [isStopped, setIsStopped] = useState(dataLocal.isStopped);
 
   //HOOKS
+  //disables the Next button if there is some info missing
   useEffect(() => {
     if (totalMinutes && incAfterEachPlay && playNumber && incOfMinutes) {
       setFormIsFilled(true);
@@ -42,6 +44,7 @@ function App() {
     }
   }, [totalMinutes, incAfterEachPlay, playNumber, incOfMinutes]);
 
+  //counters are setted in tenths of a second so it doesn't have to count a whole second each change of turns
   useEffect(() => {
     if (!isStarted) {
       setWhiteCounter(totalMinutes * 600);
@@ -49,6 +52,7 @@ function App() {
     }
   }, [totalMinutes, isStarted]);
 
+  //decreases counters using tenths of a second
   useEffect(() => {
     if (isStarted && !isStopped) {
       const interval = setInterval(() => {
@@ -62,6 +66,7 @@ function App() {
     }
   }, [isStarted, whitesTurn, isStopped, whiteCounter, blackCounter]);
 
+  //adds an event listener to the windows so the user can change turns by pressing any key
   useEffect(() => {
     if (isStarted) {
       const handleKeyUp = () => {
@@ -76,6 +81,7 @@ function App() {
     }
   });
 
+  //adds an event listener to the windows so the user can change turns by touching the screen in a tablet or smartphone
   useEffect(() => {
     if (isStarted) {
       const handleTouchStart = () => {
@@ -90,6 +96,7 @@ function App() {
     }
   });
 
+  //handles the increase of seconds when changing turns
   useEffect(() => {
     if (whitesTurn && afterFirstTurn && !isStopped) {
       setBlackCounter(
@@ -102,6 +109,7 @@ function App() {
     }
   }, [whitesTurn, incAfterEachPlay, afterFirstTurn, isStopped]);
 
+  //handles the increase of minutes after n plays if the user has selected it. It compares the selected play number with the double of the value of playNumber const, which is increased each change of turns
   useEffect(() => {
     if (numberOfPlays === playNumber * 2) {
       setWhiteCounter(
@@ -113,6 +121,7 @@ function App() {
     }
   }, [numberOfPlays, incOfMinutes, playNumber]);
 
+  //saves info in localstorage
   useEffect(() => {
     setLocalStorage(
       totalMinutes,
@@ -132,10 +141,11 @@ function App() {
   });
 
   //EVENT HANDLERS
+  //saves in state the inputs info
   const handleInputChange = (data) => {
     if (isStarted) {
       handleReset();
-    }
+    } //resets all values when the user has started playing and goes back to change any input value
     if (data.name === 'totalMinutes') {
       setTotalMinutes(data.value);
     } else if (data.name === 'incAfterEachPlay') {
@@ -147,8 +157,9 @@ function App() {
     }
   };
 
+  //saves in state the predefined options
   const handlePredefinedSettings = (data) => {
-    handleReset();
+    handleReset(); //this reset works if the user wants to change after starting to play
     setFormIsFilled(true);
     setTotalMinutes(data.minutes);
     setIncAfterEachPlay(data.seconds);
@@ -156,25 +167,30 @@ function App() {
     setIncOfMinutes('0');
   };
 
+  //changes whitesForLeft values when the user clicks the button to change clock colours
   const handleClockColours = () => {
     setWhitesForLeft((whitesForLeft) => !whitesForLeft);
   };
 
+  //starts the game
   const handleStart = () => {
     setIsStarted(true);
   };
 
+  //
   const handleStop = () => {
-    setWhitesTurn((whitesTurn) => !whitesTurn);
+    setAfterFirstTurn(true); //this is needed to make the increase of seconds if the user stops the play without pressing any key first
     setIsStopped(true);
-    setAfterFirstTurn(true);
+    setWhitesTurn((whitesTurn) => !whitesTurn);
     setNumberOfPlays((numberOfPlays) => numberOfPlays + 1);
   };
 
+  //continues the game after stopping it
   const handleContinue = () => {
     setIsStopped(false);
   };
 
+  //resets all values to initial values
   const handleReset = () => {
     setTotalMinutes('');
     setIncAfterEachPlay('');

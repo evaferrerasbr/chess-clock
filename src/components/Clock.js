@@ -20,6 +20,7 @@ function Clock(props) {
         );
       }
     } else {
+      //shows seconds and tenth of seconds when there are less than 20 seconds left
       return (
         <p className="Clock__numbers">
           {Math.floor(counter / 10) % 60}.{counter % 10}

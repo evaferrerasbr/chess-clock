@@ -1,3 +1,4 @@
+//if localstorage is empty returns an object with initial values
 const getFromLocalStorage = () => {
   const dataLocal = JSON.parse(localStorage.getItem('dataLocal'));
   return dataLocal !== null
